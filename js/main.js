@@ -1,11 +1,11 @@
 import {cityApi} from "./services/cityApi.js";
 import {weatherApi} from "./service/weatherApi.js";
-import {weathercard} from "./components/weathercard.js"
+import {WeatherCard, renderWeather} from "./components/weathercard.js"
 
 const cityInput = document.getElementById("input");
 const searchBtn = document.getElementById("inputBtn");
 
-let currentcity  = "";
+let currentCity  = "";
 
 searchBtn.addEventListener("click", async () => {
     const city = cityInput.value.trim();
@@ -22,7 +22,7 @@ searchBtn.addEventListener("click", async () => {
 setInterval(async () => {
     if (currentCity) {
         const data = await weatherApi (currentCity);
-        // renderWeather(data);
+        renderWeather(data);
         console.log("Automatisk uppdatering för: ", currentCity);
     }
 }, 600000);
