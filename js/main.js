@@ -51,17 +51,26 @@ cityInput.addEventListener("input", async () => {
     // 3: Sortera efter population – största först
     exactMatches.sort((a, b) => (b.population || 0) - (a.population || 0));
 
-    // 4: Ta ut bästa matchen (den största)
     const bestMatch = exactMatches[0];
 
-    // 5: Om det finns exakt 1 → välj direkt
+    // 4: Kolla om ALLA träffar ligger i samma land
+    const allSameCountry = exactMatches.every(c => c.country === bestMatch.country);
+
+    // 5: Om bara EN träff, välj direkt
     if (exactMatches.length === 1) {
         selectCity(bestMatch);
         return;
     }
 
-    // 6: Flera lika → visa EN (största)
-    renderOptions([bestMatch], selectCity);
+    // 6: Om flera, men alla är i samma land → visa EN (största)
+    if (allSameCountry) {
+        renderOptions([bestMatch], selectCity);
+        return;
+    }
+
+    // 7: Om flera och olika länder → visa ALLA
+    renderOptions(exactMatches, selectCity);
+
 });
 
 
