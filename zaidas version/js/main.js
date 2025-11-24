@@ -86,26 +86,21 @@ cityInput.addEventListener("keydown", (event) => {
 // 3. selectCity() – KÄRNAN I APPEN
 // ------------------------------------------------
 async function selectCity(cityObj) {
-    // Rensa alternativ-listan
     clearOptions();
-
-    // Skriv stad i inputfältet
     cityInput.value = cityObj.name;
 
-    // 1: Hämta väder från API
+    // Hämta väder
     const weather = await weatherApi(cityObj.latitude, cityObj.longitude);
-
-    // Lägg till beskrivningen via translate-modulen
     weather.weather[0].description = translateWeatherCode(weather.weather[0].code);
-
-    // Lägg till namn (väderApi vet inte stadens namn)
     weather.name = cityObj.name;
 
-    // 2: Visa väderkort
-    weatherInfo.innerHTML = "";
-    const card = new WeatherCard(weather);
-    weatherInfo.appendChild(card.render());
+    // 1. Skapa ett nytt väderkort
+    const card = new WeatherCard(weather).render();
 
-    // 3: Visa karta
+    // 2. Lägg till kortet högst upp
+    weatherInfo.prepend(card);
+
+    // 3. Uppdatera kartan
     showMap(cityObj.latitude, cityObj.longitude);
 }
+
