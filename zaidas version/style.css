@@ -7,30 +7,12 @@ body {
   justify-content: center;
   align-items: center;
   background: linear-gradient(#d0e8ff, #3dc2ff);
-  overflow: scroll;
+  overflow: hidden;
   text-align: center;
-  
+  padding: 20px;
 }
 
 
-.card {
-  border-radius: 8px;
-  padding: 15px;
-  margin-top: 40px;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.46);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background: #64c9f8;
-  box-shadow:  23px 23px 46px #fffdfd,
-  -23px -23px 46px #ffffff;
-}
-
-.hidden {
-  display: none;
-}
 
 .search-container {
   display: flex;
@@ -52,6 +34,39 @@ input {
   height: 30px;
   cursor: pointer;
 }
+.layout {
+  border-radius: 8px;
+  padding: 15px;
+  margin-top: 40px;
+  width: 500px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.46);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: #64c9f8;
+  box-shadow:  23px 23px 46px #fffdfd,
+  -23px -23px 46px #ffffff;
+
+}
+
+.card {
+width: 70%; 
+display: inline-block;
+margin-bottom: 10px;
+background: rgba(63, 118, 167, 0.6);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(4.8px);
+-webkit-backdrop-filter: blur(4.8px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.hidden {
+  display: none;
+}
+
 
 .cloud {
   position: absolute;
@@ -60,7 +75,7 @@ input {
 }
 
 .cloud1 {
-  top: 0%;
+  top: 1%;
   left: 15%;
 }
 
@@ -97,7 +112,10 @@ input {
     outline: 2px solid white;
     border-radius: 6px;
 }
+
 #cityMap {
   border-radius: 20px;
   margin-top: 20px;
+  margin-bottom: 10px;
 }
+
