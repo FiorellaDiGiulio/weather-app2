@@ -60,13 +60,8 @@ input {
 }
 
 .cloud1 {
-  top: 5%;
+  top: 0%;
   left: 15%;
-}
-
-.cloud2 {
-  top: 15%;
-  right: 15%;
 }
 
 .cloud3 {
