@@ -49,11 +49,6 @@ cityInput.addEventListener("input", async () => {
     const bestMatch = exactMatches[0];
     const allSameCountry = exactMatches.every(c => c.country === bestMatch.country);
 
-    if (exactMatches.length === 1) {
-        selectCity(bestMatch);
-        return;
-    }
-
     if (allSameCountry) {
         renderOptions([bestMatch], selectCity);
         return;
