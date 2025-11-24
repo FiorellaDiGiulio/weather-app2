@@ -1,12 +1,13 @@
 body {
   margin: 0;
+  margin-bottom: 20px;
   font-family: 'inter',sans-serif;
   color: #ffffff;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(#d0e8ff, #3dc2ff);
+  background: linear-gradient(150deg, #08014f, #5083b3);
   overflow: scroll;
   text-align: center;
   
@@ -18,12 +19,11 @@ body {
   padding: 15px;
   margin-top: 40px;
   text-align: center;
-  background: rgba(255, 255, 255, 0.46);
   border-radius: 16px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  background: #64c9f8;
+  background: #e9edef;
   box-shadow:  23px 23px 46px #fffdfd,
   -23px -23px 46px #ffffff;
 }
