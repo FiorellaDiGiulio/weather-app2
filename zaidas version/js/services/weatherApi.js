@@ -1,42 +1,29 @@
-// weatherApi.js
-// =============================
-// Hämtar riktigt väder från Open-Meteo baserat på lat/lon
-// Returnerar ett objekt anpassat för WeatherCard
-// =============================
+// weatherApi.js – ny version för ONVO-API
 
-export async function weatherApi(lat, lon) {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`;
+export async function weatherApi(cityName) {
+    const url = `http://stockholm2.onvo.se:81/?city_name=${encodeURIComponent(cityName)}`;
 
     try {
         const res = await fetch(url);
-        if (!res.ok) throw new Error("Kunde inte hämta väder");
+        if (!res.ok) throw new Error("Kunde inte hämta väder från ONVO");
 
         const data = await res.json();
 
-        if (!data.current_weather) {
-            throw new Error("API returnerade ingen väderdata");
-        }
-
-        const weather = data.current_weather;
-
-        // Returnera ett format som passar WeatherCard
+        // Anpassa detta efter exakt struktur API:t returnerar!
         return {
-            name: null,              // main.js fyller i detta
-            main: {
-                temp: weather.temperature
-            },
-            wind: weather.windspeed,
+            name: data.city || cityName,
+            main: { temp: data.temperature },
             weather: [
                 {
-                    code: weather.weathercode,
-                    description: null           // utility-modul fixar text
+                    description: data.description || "Okänt väder",
+                    code: data.code || 0
                 }
             ],
-            time: weather.time
+            time: data.updated
         };
 
-    } catch (error) {
-        console.error("weatherApi error:", error);
+    } catch (err) {
+        console.error("weatherApi error:", err);
         return null;
     }
 }

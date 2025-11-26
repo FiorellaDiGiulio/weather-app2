@@ -74,7 +74,7 @@ async function selectCity(cityObj) {
     cityInput.value = cityObj.name;
 
     // 1: Hämta väder
-    const weather = await weatherApi(cityObj.latitude, cityObj.longitude);
+    const weather = await weatherApi(cityObj.name);
 
     weather.weather[0].description = translateWeatherCode(weather.weather[0].code);
     weather.name = cityObj.name;
