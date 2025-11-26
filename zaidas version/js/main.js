@@ -66,31 +66,33 @@ cityInput.addEventListener("keydown", (event) => {
 });
 
 
-// --------------------------------------
-// 3. selectCity() – minimal, ren logik
-// --------------------------------------
 async function selectCity(cityObj) {
     clearOptions();
     cityInput.value = cityObj.name;
 
-    // 1: Hämta väder
+    // 1. Hämta väder
     const weather = await weatherApi(cityObj.latitude, cityObj.longitude);
 
     weather.weather[0].description = translateWeatherCode(weather.weather[0].code);
     weather.name = cityObj.name;
 
-    // Koordinater läggs in för WeatherCard-modulen
+    // Lägg till koordinater i weather-objektet
     weather.lat = cityObj.latitude;
     weather.lon = cityObj.longitude;
 
-    // 2: Skapa kort
+    // 2. Skapa och lägg in kortet
     const card = new WeatherCard(weather).render();
-
-    // WEATHER CARD hanterar ALLT:
-    // - Ta bort dubletter
-    // - Prepend
     WeatherCard.insert(card);
 
-    // 3: Visa karta
+    // 3. Visa container och sektioner
+    const layout = document.querySelector(".layout");
+    const weatherInfo = document.getElementById("weatherInfo");
+    const cityMap = document.getElementById("cityMap");
+
+    layout.classList.remove("hidden");
+    weatherInfo.classList.remove("hidden");
+    cityMap.classList.remove("hidden");
+
+    // 4. Visa karta (skapar ny karta)
     showMap(cityObj.latitude, cityObj.longitude);
 }
