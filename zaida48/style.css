@@ -1,3 +1,4 @@
+/* body {
 :root {
   /* Färger */
   --color-text: #ffffff;
@@ -184,7 +185,7 @@ input {
   .search-container {
     width: 95%;
   }
-}
+} */
 @import url("./css/themes.css");
 @import url("./css/layout.css");
 @import url("./css/components.css");

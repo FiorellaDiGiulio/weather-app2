@@ -1,0 +1,51 @@
+/* =============================
+   RESET / GLOBAL
+   ============================= */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+body {
+  background: linear-gradient(15deg, lightblue, darkblue, rgb(7, 7, 54));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: var(--font-base);
+  color: var(--color-surface);
+}
+
+/* =============================
+   Grundlayout (GRID)
+   ============================= */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  max-width: 900px;
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+/* =============================
+   Sektioner (FLEX)
+   ============================= */
+.weather-section,
+.map-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+
+
