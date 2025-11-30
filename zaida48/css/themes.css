@@ -4,6 +4,8 @@
   --color-surface: #ffffff;
   --color-primary: #5083b3;
   --color-accent: #ffcc00;
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255,255,255,0.7);
 /* Avstånd */
   --space-sm: 8px;
   --space-md: 16px;
@@ -12,6 +14,8 @@
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
+  /* Skuggor */
+--shadow-soft: 0 3px 8px rgba(0,0,0,0.25);
   /* Typografi */
 --font-base: "Inter", sans-serif;
 
