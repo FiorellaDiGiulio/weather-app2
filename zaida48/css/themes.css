@@ -1,6 +1,6 @@
 :root {
   /* Färger */
-  --color-bg: #08014f;
+  --color-bg: linear-gradient(15deg, lightblue, darkblue, rgb(7, 7, 54));
   --color-surface: #ffffff;
   --color-primary: #5083b3;
   --color-accent: #ffcc00;

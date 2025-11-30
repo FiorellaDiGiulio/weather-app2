@@ -10,7 +10,7 @@ html, body {
 }
 
 body {
-  background: linear-gradient(15deg, lightblue, darkblue, rgb(7, 7, 54));
+  background: var(--color-bg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: var(--font-base);
