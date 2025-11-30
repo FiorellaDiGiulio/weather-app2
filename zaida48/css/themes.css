@@ -1,0 +1,18 @@
+:root {
+  /* Färger */
+  --color-bg: #08014f;
+  --color-surface: #ffffff;
+  --color-primary: #5083b3;
+  --color-accent: #ffcc00;
+/* Avstånd */
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+/* Mjuka avrundningar */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  /* Typografi */
+--font-base: "Inter", sans-serif;
+
+}
