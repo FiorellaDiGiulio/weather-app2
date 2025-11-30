@@ -24,7 +24,7 @@ export class WeatherCard {
         });
 
         card.innerHTML = `
-            <section role="region" aria-label="Väder för ${this.data.name}" aria-live="polite">
+            <section class="card" role="region" aria-label="Väder för ${this.data.name}" aria-live="polite">
                 <h2 tabindex="0">${this.data.name}</h2>
                 <p tabindex="0">
                     <span class="sr-only">Temperatur:</span>
