@@ -1,0 +1,22 @@
+:root {
+  /* Färger */
+  --color-bg: linear-gradient(15deg, lightblue, darkblue, rgb(7, 7, 54));
+  --color-surface: #ffffff;
+  --color-primary: #5083b3;
+  --color-accent: #ffcc00;
+  --color-text: #ffffff;
+  --color-text-muted: rgba(255,255,255,0.7);
+/* Avstånd */
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+/* Mjuka avrundningar */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  /* Skuggor */
+--shadow-soft: 0 3px 8px rgba(0,0,0,0.25);
+  /* Typografi */
+--font-base: "Inter", sans-serif;
+
+}
