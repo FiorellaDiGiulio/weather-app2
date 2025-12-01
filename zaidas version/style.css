@@ -1,31 +1,70 @@
+:root {
+  /* Färger */
+  --color-text: #ffffff;
+  --color-background-start: #d0e8ff;
+  --color-background-end: #3dc2ff;
+  --color-layout-bg: #64c9f8;
+  --color-card-bg: rgba(63, 118, 167, 0.6);
+  --color-card-border: rgba(255, 255, 255, 0.3);
+  --color-city-option: #ffffff66;
+  --color-city-option-hover: #ffffffaa;
+
+  /* Typsnitt */
+  --font-main: 'inter', sans-serif;
+
+  /* Storlekar */
+  --radius-small: 6px;
+  --radius-medium: 8px;
+  --radius-large: 16px;
+  --radius-xlarge: 20px;
+
+  --spacing-xs: 5px;
+  --spacing-sm: 8px;
+  --spacing-md: 10px;
+  --spacing-lg: 15px;
+  --spacing-xl: 20px;
+  --spacing-xxl: 40px;
+
+  /* Skuggor */
+  --shadow-layout: 23px 23px 46px #fffdfd, -23px -23px 46px #ffffff;
+  --shadow-card: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+  /* Backdrop */
+  --backdrop-blur: 4.8px;
+
+  /* Breakpoints */
+  --breakpoint-sm: 480px;
+}
+
+/* Global stil */
 body {
   margin: 0;
-  font-family: 'inter', sans-serif;
-  color: #ffffff;
+  font-family: var(--font-main);
+  color: var(--color-text);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(#d0e8ff, #3dc2ff);
+  background: linear-gradient(var(--color-background-start), var(--color-background-end));
   overflow-y: auto;
   text-align: center;
-  padding: 20px;
+  padding: var(--spacing-xl);
 }
 
 .search-container {
   display: flex;
-  gap: 5px;
-  margin-bottom: 10px;
+  gap: var(--spacing-xs);
+  margin-bottom: var(--spacing-sm);
   width: 90%;
   max-width: 500px;
 }
 
 input {
   flex: 1;
-  padding: 10px;
+  padding: var(--spacing-md);
   font-size: 16px;
   border: 1px solid #ccc;
-  border-radius: 8px 0 0 8px;
+  border-radius: var(--radius-medium) 0 0 var(--radius-medium);
   outline: none;
 }
 
@@ -36,14 +75,14 @@ input {
 }
 
 .layout {
-  border-radius: 16px;
-  padding: 15px;
-  margin-top: 40px;
+  border-radius: var(--radius-large);
+  padding: var(--spacing-lg);
+  margin-top: var(--spacing-xxl);
   width: 90%;
   max-width: 500px;
   text-align: center;
-  background: #64c9f8;
-  box-shadow: 23px 23px 46px #fffdfd, -23px -23px 46px #ffffff;
+  background: var(--color-layout-bg);
+  box-shadow: var(--shadow-layout);
 }
 
 .card {
@@ -51,17 +90,17 @@ input {
   max-width: 350px;
   margin: 10px auto;
   display: block;
-  background: rgba(63, 118, 167, 0.6);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(4.8px);
-  -webkit-backdrop-filter: blur(4.8px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: var(--color-card-bg);
+  border-radius: var(--radius-large);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(var(--backdrop-blur));
+  -webkit-backdrop-filter: blur(var(--backdrop-blur));
+  border: 1px solid var(--color-card-border);
 }
 
 #cityMap {
-  border-radius: 20px;
-  margin: 20px auto 10px auto;
+  border-radius: var(--radius-xlarge);
+  margin: var(--spacing-xl) auto var(--spacing-md) auto;
   width: 90%;
   max-width: 500px;
   height: 300px;
@@ -71,8 +110,8 @@ input {
   display: block;
   width: 100%;
   text-align: left;
-  padding: 8px 12px;
-  background: #ffffff66;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-city-option);
   border: none;
   font-size: 16px;
   cursor: pointer;
@@ -80,9 +119,9 @@ input {
 
 .city-option:hover,
 .city-option.selected {
-  background: #ffffffaa;
+  background: var(--color-city-option-hover);
   outline: 2px solid white;
-  border-radius: 6px;
+  border-radius: var(--radius-small);
 }
 
 .sr-only {
@@ -117,7 +156,7 @@ input {
   display: none !important;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: var(--breakpoint-sm)) {
   .layout {
     padding: 10px;
     margin-top: 20px;
