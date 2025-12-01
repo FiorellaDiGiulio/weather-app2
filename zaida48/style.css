@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* body {
 :root {
   /* Färger */
@@ -188,7 +189,16 @@ input {
 } */
 @import url("./css/themes.css");
 @import url("./css/layout.css");
-@import url("./css/base.css");
-@import url("./css/components.css");
-@import url("./css/layout.css");
+=======
+/* Variabler FÖRST */
 @import url("./css/themes.css");
+
+/* Reset och bas-stilar */
+>>>>>>> 21627e1 (hej)
+@import url("./css/base.css");
+
+/* Struktur (grid/flex) */
+@import url("./css/layout.css");
+
+/* UI-komponenter */
+@import url("./css/components.css");
