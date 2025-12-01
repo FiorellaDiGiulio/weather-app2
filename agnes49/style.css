@@ -251,6 +251,24 @@ input:focus {
     outline-offset: 3px;
 }
 
+.weekly-forecast {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding: 10px 0;
+}
+
+.weekly-card {
+    flex: 0 0 auto;
+    min-width: 80px;
+    background: var(--card-bg);
+    color: var(--card-text);
+    border-radius: 10px;
+    padding: 8px;
+    text-align: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
 /* RESPONSIVITET */
 @media (max-width: 480px) {
     body {
