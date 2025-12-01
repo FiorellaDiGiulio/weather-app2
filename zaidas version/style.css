@@ -1,108 +1,214 @@
+/* BAS*/
 body {
-  margin: 0;
-  font-family: 'inter',sans-serif;
-  color: #ffffff;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(#d0e8ff, #3dc2ff);
-  overflow: scroll;
-  text-align: center;
-  
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #d0ebff, #58a6ff); /* mjuk blå bakgrund */
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: #1b1b1b; /* hög kontrast text */
 }
 
-
-.card {
-  border-radius: 8px;
-  padding: 15px;
-  margin-top: 40px;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.46);
-  border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background: #64c9f8;
-  box-shadow:  23px 23px 46px #fffdfd,
-  -23px -23px 46px #ffffff;
+.app {
+    width: 100%;
+    max-width: 450px;
 }
 
-.hidden {
-  display: none;
+.app-title {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 28px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
 }
 
+/* SÖK */
 .search-container {
-  display: flex;
-  gap: 5px; /* mellanrum mellan input och knapp */
-  margin-bottom: 10px;
+    display: flex;
+    gap: 8px;
 }
 
 input {
-  flex: 1; /* input tar upp allt utrymme */
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px 0 0 8px; /* rundade hörn på vänster sida */
-  outline: none;
-}
-
-.btn-icon {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-}
-
-.cloud {
-  position: absolute;
-  width: 100px; 
-  opacity: 0.7; 
-}
-
-.cloud1 {
-  top: 5%;
-  left: 15%;
-}
-
-.cloud2 {
-  top: 15%;
-  right: 15%;
-}
-
-.cloud3 {
-  bottom: 10%;
-  left: 25%;
-}
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
-.city-option {
-    display: block;
-    width: 100%;
-    text-align: left;
-    padding: 8px 12px;
-    background: #ffffff66;
-    border: none;
+    flex: 1;
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #fff;
     font-size: 16px;
+    background-color: #e6f0ff;
+    color: #1b1b1b;
+}
+
+input:focus {
+    outline: 3px solid #005fcc; /* tydlig fokus */
+}
+
+#searchBtn {
+    padding: 12px 18px;
+    border: none;
+    background-color: #005fcc;
+    color: #fff;
+    border-radius: 10px;
     cursor: pointer;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+#searchBtn:hover,
+#searchBtn:focus {
+    background-color: #003f99;
+    outline: none;
+}
+
+/* SÖKRESULTAT / ALTERNATIV SOM KORT */
+.options {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+.city-option {
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    font-size: 15px;
+    text-align: center;
+    transition: transform 0.2s, background 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-height: 100px;
+    justify-content: center;
 }
 
 .city-option:hover,
+.city-option:focus,
 .city-option.selected {
-    background: #ffffffaa;
-    outline: 2px solid white;
-    border-radius: 6px;
+    transform: translateY(-2px);
+    background: rgba(255,255,255,1);
+    outline: 3px solid #005fcc;
 }
+
+/* SPARADE STÄDER (KORTGALLERI) */
+.saved {
+    margin-top: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+}
+
+.city-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+    min-height: 100px;
+}
+
+.city-card:hover,
+.city-card:focus {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 1);
+    outline: 3px solid #005fcc;
+}
+
+.city-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.city-name {
+    font-weight: bold;
+    font-size: 16px;
+    color: #1b1b1b;
+}
+
+.city-weather {
+    font-size: 14px;
+    color: #555555;
+}
+
+.city-temp {
+    font-weight: bold;
+    font-size: 18px;
+    color: #db7100;
+    margin-top: auto; /* flyttar temperatur längst ner på kort */
+}
+
+/* VÄDERKORT */
+.card {
+    margin-top: 20px;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    color: #1b1b1b;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+
 #cityMap {
-  border-radius: 20px;
-  margin-top: 20px;
+    width: 100%;
+    height: 220px;
+    margin-top: 20px;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* TILLGÄNGLIGHET */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+
+/* RESPONSIVITET */
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    .app-title {
+        font-size: 24px;
+    }
+
+    input {
+        font-size: 14px;
+    }
+
+    /* Kort blir vertikala på mobil */
+    .saved, .options {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .city-card, .city-option {
+        flex-direction: row;
+        justify-content: space-between;
+        min-height: auto;
+        padding: 10px 12px;
+    }
+
+    .city-temp {
+        margin-top: 0;
+    }
+
+    .city-name {
+        font-size: 14px;
+    }
+
+    .city-temp {
+        font-size: 16px;
+    }
 }

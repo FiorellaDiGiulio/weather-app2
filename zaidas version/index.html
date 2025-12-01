@@ -1,42 +1,52 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Väderstation</title>
     <link rel="stylesheet" href="style.css">
-        <!-- Leaflet för kartan -->
+
+    <!-- Leaflet (karta) -->
     <link
         rel="stylesheet"
         href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-        crossorigin=""
     />
-        <script
+    <script
         defer
         src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-        crossorigin=""
     ></script>
-    
-    <title aria-label="Väderstation">Väderstation</title>
+
     <script type="module" src="./js/main.js"></script>
 </head>
+
 <body>
 
-    <div class="container">
-    <h1>Väderapp</h1>
-    <div class="search-container">
-    <label class="sr-only" for="input">Skriv stad här</label>
-    <input id="input" type="text" placeholder="Skriv stad här" aria-label="Skriv stad här" autocorrect="off" autocomplete="off">
-    <button id="inputBtn" aria-label="Sök-knapp">
-              <img src="Bilder/cloud.svg" class="cloud cloud1" alt="Moln">
-              <img src="Bilder/cloud.svg" class="cloud cloud2" alt="Moln">
-              <img src="Bilder/cloud.svg" class="cloud cloud3" alt="Moln">
-              <img src="Bilder/search (1).svg" alt="Sök" class="btn-icon" />
-          </button>
-      </div>
-      <section id="cityOptions" aria-live="polite" aria-label="dropdown med alternativa städer"></section>
-      <section id="weatherInfo" aria-live="polite" aria-atomic="true" aria-label="Väderinformation" tabindex="0"></section>
-      <section id="cityMap" aria-label="Staden på karta" tabindex="0"></section>
+    <main class="app">
+
+        <h1 class="app-title">Väderapp</h1>
+
+        <div class="search-container">
+            <label class="sr-only" for="input">Sök stad</label>
+            <input id="input" type="text" placeholder="Sök stad..." autocomplete="off">
+            <button id="searchBtn" aria-label="Sök">Sök</button>
+        </div>
+
+        <!-- Lista med städer -->
+        <section id="cityOptions" class="options"></section>
+        
+        <!-- Karta -->
+        <section id="cityMap"></section>
+                
+        <!-- Väderkort -->
+        <section id="weatherInfo"></section>
+
+        <!-- Sparade städer -->
+        <section id="savedCities" class="saved"></section>
+
+
+    </main>
+
 </body>
 </html>
+
