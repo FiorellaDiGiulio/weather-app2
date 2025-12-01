@@ -81,7 +81,7 @@ export class SavedCitiesManager {
 
         if (existingIndex === -1) {
             // Max 3 sparade städer
-            if (this.savedCities.length >= 4) this.savedCities.shift();
+            if (this.savedCities.length >= 3) this.savedCities.shift();
             this.savedCities.push(cityObj);
             this.saveCities();
         } else {
