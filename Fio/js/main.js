@@ -1,5 +1,5 @@
 import { cityApi } from "./services/cityApi.js";
-import { SavedCitiesManager } from "./components/SavedCitiesManager.js";
+import { SavedCitiesManager } from "./components/savedCitiesManager.js";
 import { renderOptions, clearOptions, handleKeyboardNavigation } from "./components/optionsList.js";
 
 const cityInput = document.getElementById("input");
