@@ -1,6 +1,6 @@
 import './components/theme.js'; // Lägg först så temat sätts direkt
 import { cityApi } from "./services/cityApi.js";
-import { SavedCitiesManager } from "./components/savedCitiesManager.js";
+import { SavedCitiesManager } from "./components/SavedCitiesManager.js";
 import { renderOptions, clearOptions, handleKeyboardNavigation } from "./components/optionsList.js";
 
 const cityInput = document.getElementById("input");
@@ -11,9 +11,9 @@ const weatherInfo = document.getElementById("weatherInfo");
 // Skapa instans av SavedCitiesManager
 const savedCitiesManager = new SavedCitiesManager(cityInput, savedCitiesContainer, weatherInfo);
 
-// Rendera sparade städer direkt vid start
+// Rendera sparade städer direkt vid start (döljer dem)
 (async () => {
-    await savedCitiesManager.renderSavedCities();
+    await savedCitiesManager.renderSavedCities(false);
 })();
 
 // Event: Sök-stad när användaren skriver

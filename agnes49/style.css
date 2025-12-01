@@ -1,6 +1,6 @@
 /* Färgvariabler och tema */
 :root {
-    --bg: #4fa1fe;
+    --bg: #7acaff;
     --text: #ffffff;
     --card-bg: rgba(255, 255, 255, 0.9);
     --card-text: #1b1b1b;
@@ -119,37 +119,50 @@ input:focus {
     outline: none;
 }
 
-/* SÖKRESULTAT / ALTERNATIV */
-.options {
-    margin-top: 10px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 12px;
-}
-
-.city-option {
-    padding: 12px 16px;
-    border-radius: 12px;
-    background: var(--card-bg);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    cursor: pointer;
-    font-size: 15px;
-    text-align: center;
-    transition: transform 0.2s, background 0.3s;
+/* Container för options */
+#cityOptions {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    min-height: 100px;
-    justify-content: center;
-    color: var(--card-text);
-}
+    gap: 10px;
+    margin-top: 20px;
+    max-height: 300px; /* begränsa höjd */
+  }
+  
+  /* Själva options */
+  .city-option {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.15); /* semi-transparent glas */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
 
-.city-option:hover,
-.city-option:focus,
-.city-option.selected {
-    transform: translateY(-2px);
-    outline: 3px solid var(--accent);
-}
+  }
+  
+  /* Markerad option (tangentbord eller klick) */
+  .city-option.selected {
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border: 2px solid #005fcc;
+  }
+  
+  /* Scrollbar-styling */
+  #cityOptions::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  #cityOptions::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
+  
+  #cityOptions::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
 /* SPARADE STÄDER (KORTGALLERI) */
 .saved {
@@ -278,4 +291,40 @@ input:focus {
     }
 }
 
+.city-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: var(--card-bg);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.2s, background 0.3s;
+    min-height: 100px;
+    color: var(--card-text);
+    position: relative; /* Lägg till denna rad */
+}
 
+/* Kryss-knapp för sparade städer */
+.city-card .remove-btn {
+    position: absolute; /* absolut position inuti kortet */
+    top: 8px;
+    right: 8px;
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    color: #373737;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.city-card .remove-btn:hover {
+    background: rgba(255,255,255,0.4);
+}

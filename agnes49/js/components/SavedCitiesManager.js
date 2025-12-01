@@ -18,9 +18,10 @@ export class SavedCitiesManager {
     }
 
     // Renderar sparade städer som kort med temperatur
-    async renderSavedCities() {
+    async renderSavedCities(show = true) {
         this.savedCitiesContainer.innerHTML = "";
 
+        if (!show) return;
         if (this.savedCities.length === 0) return;
 
         for (const city of this.savedCities) {
@@ -30,12 +31,10 @@ export class SavedCitiesManager {
             let tempText = 0;
 
             if (weather) {
-                // Beskrivning
                 if (weather.weather && weather.weather[0]) {
                     weatherText = translateWeatherCode(weather.weather[0].code);
                 }
 
-                // Temperatur: fallback för olika API-format
                 if (weather.main?.temp !== undefined) {
                     tempText = Math.round(weather.main.temp);
                 } else if (weather.weather && weather.weather[0]) {
@@ -46,7 +45,7 @@ export class SavedCitiesManager {
             // Skapa kort
             const card = document.createElement("div");
             card.className = "city-card";
-            card.tabIndex = 0; // gör tabbbar
+            card.tabIndex = 0;
 
             const info = document.createElement("div");
             info.className = "city-info";
@@ -68,6 +67,20 @@ export class SavedCitiesManager {
 
             card.appendChild(info);
             card.appendChild(tempEl);
+
+            // ✅ Lägg till kryss-knapp direkt på kortet
+            const removeBtn = document.createElement("button");
+            removeBtn.className = "remove-btn";
+            removeBtn.textContent = "×";
+            removeBtn.addEventListener("click", (e) => {
+                e.stopPropagation(); // hindra click på card
+                this.savedCities = this.savedCities.filter(
+                    c => !(c.name === city.name && c.country === city.country)
+                );
+                this.saveCities();
+                this.renderSavedCities();
+            });
+            card.appendChild(removeBtn);
 
             // Klick eller Enter: välj stad
             const selectHandler = () => this.selectCity(city);
@@ -94,7 +107,7 @@ export class SavedCitiesManager {
 
         if (existingIndex === -1) {
             // Max 3 sparade städer
-            if (this.savedCities.length >= 3) this.savedCities.shift();
+            if (this.savedCities.length >= 4) this.savedCities.shift();
             this.savedCities.push(cityObj);
             this.saveCities();
         } else {
@@ -109,7 +122,6 @@ export class SavedCitiesManager {
         const weather = await weatherApi(cityObj.latitude, cityObj.longitude);
         if (!weather) return;
 
-        // Anpassa väderbeskrivning
         if (weather.weather && weather.weather[0]) {
             weather.weather[0].description = translateWeatherCode(weather.weather[0].code);
         }
