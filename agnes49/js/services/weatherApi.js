@@ -1,11 +1,3 @@
-// weatherApi.js
-// =============================
-// Hämtar väderdata från Open-Meteo
-// =============================
-
-// =============================
-// Dagens väder
-// =============================
 export async function weatherApi(lat, lon) {
     const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`;
 
@@ -44,10 +36,10 @@ export async function weatherApi(lat, lon) {
 }
 
 // =============================
-// Veckoväder
+// Veckoväder med vind
 // =============================
 export async function weeklyWeatherApi(lat, lon) {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,weathercode,precipitation_sum&timezone=auto`;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,weathercode,windspeed_10m_max,precipitation_sum&timezone=auto`;
 
     try {
         const res = await fetch(url);
@@ -55,12 +47,12 @@ export async function weeklyWeatherApi(lat, lon) {
 
         const data = await res.json();
 
-        // Returnera ett enklare format för rendering
         return {
-            days: data.daily.time,                     // datumsträngar
-            tempMax: data.daily.temperature_2m_max,    // max-temp
-            tempMin: data.daily.temperature_2m_min,    // min-temp
-            weatherCode: data.daily.weathercode,       // väderkod
+            days: data.daily.time,                      // datumsträngar
+            tempMax: data.daily.temperature_2m_max,     // max-temp
+            tempMin: data.daily.temperature_2m_min,     // min-temp
+            weatherCode: data.daily.weathercode,        // väderkod
+            wind: data.daily.windspeed_10m_max,         // vind
             precipitation: data.daily.precipitation_sum // nederbörd
         };
 
