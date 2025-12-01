@@ -29,18 +29,24 @@ export class SavedCitiesManager {
             let weatherText = "";
             let tempText = 0;
 
-            // Anpassa till API: current_weather eller weather
-            if (weather && weather.current_weather) {
-                weatherText = translateWeatherCode(weather.current_weather.weathercode);
-                tempText = Math.round(weather.current_weather.temperature);
-            } else if (weather && weather.weather) {
-                weatherText = translateWeatherCode(weather.weather[0].code);
-                tempText = Math.round(weather.weather[0].temperature ?? 0);
+            if (weather) {
+                // Beskrivning
+                if (weather.weather && weather.weather[0]) {
+                    weatherText = translateWeatherCode(weather.weather[0].code);
+                }
+
+                // Temperatur: fallback för olika API-format
+                if (weather.main?.temp !== undefined) {
+                    tempText = Math.round(weather.main.temp);
+                } else if (weather.weather && weather.weather[0]) {
+                    tempText = Math.round(weather.weather[0].temperature ?? weather.weather[0].temp ?? 0);
+                }
             }
 
             // Skapa kort
             const card = document.createElement("div");
             card.className = "city-card";
+            card.tabIndex = 0; // gör tabbbar
 
             const info = document.createElement("div");
             info.className = "city-info";
@@ -63,8 +69,15 @@ export class SavedCitiesManager {
             card.appendChild(info);
             card.appendChild(tempEl);
 
-            // Klick för att välja stad
-            card.addEventListener("click", () => this.selectCity(city));
+            // Klick eller Enter: välj stad
+            const selectHandler = () => this.selectCity(city);
+            card.addEventListener("click", selectHandler);
+            card.addEventListener("keydown", e => {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    selectHandler();
+                }
+            });
 
             this.savedCitiesContainer.appendChild(card);
         }

@@ -1,3 +1,4 @@
+import './components/theme.js'; // Lägg först så temat sätts direkt
 import { cityApi } from "./services/cityApi.js";
 import { SavedCitiesManager } from "./components/savedCitiesManager.js";
 import { renderOptions, clearOptions, handleKeyboardNavigation } from "./components/optionsList.js";
@@ -31,15 +32,18 @@ cityInput.addEventListener("input", async () => {
     renderOptions(matches, city => savedCitiesManager.selectCity(city));
 });
 
-// Event: Enter / pilstyrning
-cityInput.addEventListener("keydown", e =>
-    handleKeyboardNavigation(e, city => savedCitiesManager.selectCity(city))
-);
+// Event: Enter / pilar
+cityInput.addEventListener("keydown", e => {
+    handleKeyboardNavigation(e, city => savedCitiesManager.selectCity(city));
+});
 
 // Event: Klick på sök-knappen
 document.getElementById("searchBtn").addEventListener("click", async () => {
-    if (cityInput.value.trim().length === 0) return;
+    const query = cityInput.value.trim();
+    if (!query) return;
 
-    const matches = await cityApi(cityInput.value.trim());
-    if (matches.length > 0) savedCitiesManager.selectCity(matches[0]);
+    const matches = await cityApi(query);
+    if (matches.length > 0) {
+        savedCitiesManager.selectCity(matches[0]);
+    }
 });
