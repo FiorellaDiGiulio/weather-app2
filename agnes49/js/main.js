@@ -7,9 +7,15 @@ const cityInput = document.getElementById("input");
 const cityOptions = document.getElementById("cityOptions");
 const savedCitiesContainer = document.getElementById("savedCities");
 const weatherInfo = document.getElementById("weatherInfo");
+const weeklyContainer = document.getElementById("weeklyForecast"); // Veckovädercontainer
 
 // Skapa instans av SavedCitiesManager
-const savedCitiesManager = new SavedCitiesManager(cityInput, savedCitiesContainer, weatherInfo);
+const savedCitiesManager = new SavedCitiesManager(
+    cityInput,
+    savedCitiesContainer,
+    weatherInfo,
+    weeklyContainer // skickar med veckovädercontainer
+);
 
 // Rendera sparade städer direkt vid start (döljer dem)
 (async () => {
