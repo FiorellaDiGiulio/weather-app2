@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="sv" enterkeyhint="search">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+        <!-- Leaflet för kartan -->
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""
+    />
+        <script
+        defer
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+    ></script>
+    
+    <title aria-label="Väderstation">Väderstation</title>
+    <script type="module" src="./js/main.js"></script>
+</head>
+<body>
+
+    <div class="container">
+    <h1>Väderapp</h1>
+    <div class="search-container">
+        <label class="sr-only" for="input">Skriv stad här</label>
+        <input id="input" type="text" placeholder="Skriv stad här" aria-label="Skriv stad här" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="text">
+        <button id="inputBtn" aria-label="Sök-knapp">
+            <img src="Bilder/search_loggo.webp" alt="Sök" class="btn-icon" />
+        </button>
+            <!-- Dragbar flärp för sparade kort -->
+            <div id="saveDrawer" class="drawer closed">
+                <div id="drawerHandle" class="drawer-handle" aria-label="Öppna panel för sparade kort">
+                    ⠿
+                </div>
+                
+                <div class="drawer-content">
+                    <h3>Sparade städer</h3>
+                    <div id="savedCards" class="saved-cards"></div>
+                </div>
+            </div>
+        </div>
+        <section id="cityOptions" aria-live="polite" aria-label="dropdown med alternativa städer"></section>
+        
+        <div class="layout hidden">
+            <section id="cityMap" class="hidden" aria-label="Staden på karta" tabindex="0"></section>
+            <section id="weatherInfo" class="hidden" aria-live="polite" aria-atomic="true" aria-label="Väderinformation" tabindex="0"></section>
+            
+        </div>
+        
+   
+</body>
+</html>
