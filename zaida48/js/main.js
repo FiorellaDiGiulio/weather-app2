@@ -8,16 +8,27 @@ import { weatherApi } from "./services/weatherApi.js";
 import { translateWeatherCode } from "./utility/translate.js";
 import { WeatherCard } from "./components/weathercard.js";
 import { showMap } from "./components/mapView.js";
+import { renderOptions, clearOptions, handleKeyboardNavigation } from "./components/optionsList.js";
+import { initDrawer } from "./drawer.js";
 
-import {
-    renderOptions,
-    clearOptions,
-    handleKeyboardNavigation
-} from "./components/optionsList.js";
 
-// DOM-element
+// --------------------------------------
+// DOM-element (ALLT på ett ställe)
+// --------------------------------------
 const cityInput = document.getElementById("input");
 const cityOptions = document.getElementById("cityOptions");
+
+const layout = document.querySelector(".layout");
+const weatherInfo = document.getElementById("weatherInfo");
+const cityMap = document.getElementById("cityMap");
+
+const savedContainer = document.getElementById("savedCards");
+
+
+// --------------------------------------
+// INITIERA DRAWER (ska ske efter DOM-queries)
+// --------------------------------------
+initDrawer();
 
 
 // --------------------------------------
@@ -31,11 +42,12 @@ cityInput.addEventListener("input", async () => {
         return;
     }
 
+    // Hämta alla träffar
     const allMatches = await cityApi(text);
 
+    // Endast namn som börjar exakt med texten
     const exactMatches = allMatches.filter(city =>
-        city.name
-            .toLocaleLowerCase("sv-SE")
+        city.name.toLocaleLowerCase("sv-SE")
             .startsWith(text.toLocaleLowerCase("sv-SE"))
     );
 
@@ -44,16 +56,20 @@ cityInput.addEventListener("input", async () => {
         return;
     }
 
+    // Sortera (största städer först)
     exactMatches.sort((a, b) => (b.population || 0) - (a.population || 0));
 
+    // Se om alla är i samma land
     const bestMatch = exactMatches[0];
     const allSameCountry = exactMatches.every(c => c.country === bestMatch.country);
 
+    // Om samma land, visa bara bästa träffen
     if (allSameCountry) {
         renderOptions([bestMatch], selectCity);
         return;
     }
 
+    // Annars: visa flera val
     renderOptions(exactMatches, selectCity);
 });
 
@@ -66,6 +82,9 @@ cityInput.addEventListener("keydown", (event) => {
 });
 
 
+// --------------------------------------
+// 3. VÄLJ STAD (klick eller enter)
+// --------------------------------------
 async function selectCity(cityObj) {
     clearOptions();
     cityInput.value = cityObj.name;
@@ -73,26 +92,27 @@ async function selectCity(cityObj) {
     // 1. Hämta väder
     const weather = await weatherApi(cityObj.latitude, cityObj.longitude);
 
+    // Lägg in översatt väderkod
     weather.weather[0].description = translateWeatherCode(weather.weather[0].code);
     weather.name = cityObj.name;
 
-    // Lägg till koordinater i weather-objektet
+    // Lägg in koordinater direkt i objektet
     weather.lat = cityObj.latitude;
     weather.lon = cityObj.longitude;
 
-    // 2. Skapa och lägg in kortet
+    // 2. Skapa HUVUD-kortet + lägg in först
     const card = new WeatherCard(weather).render();
     WeatherCard.insert(card);
 
-    // 3. Visa container och sektioner
-    const layout = document.querySelector(".layout");
-    const weatherInfo = document.getElementById("weatherInfo");
-    const cityMap = document.getElementById("cityMap");
+    // 3. Lägg till en klon i flärpens sparade kort
+    const clone = card.cloneNode(true);
+    savedContainer.appendChild(clone);
 
+    // 4. Visa layout + kartsektion
     layout.classList.remove("hidden");
     weatherInfo.classList.remove("hidden");
     cityMap.classList.remove("hidden");
 
-    // 4. Visa karta (skapar ny karta)
+    // 5. Visa karta
     showMap(cityObj.latitude, cityObj.longitude);
 }
