@@ -39,7 +39,7 @@ export function renderOptions(matches, onSelect) {
         const btn = document.createElement("button");
         btn.textContent = `${match.name}, ${match.country}`;
         btn.className = "city-option";
-        btn.setAttribute("tabindex", "-1");
+        btn.setAttribute("tabindex", "0");
 
         // MUSMARKERING (temporär highlight)
         btn.addEventListener("mouseenter", () => {
