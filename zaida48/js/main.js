@@ -9,7 +9,7 @@ import { translateWeatherCode } from "./utility/translate.js";
 import { WeatherCard } from "./components/weathercard.js";
 import { showMap } from "./components/mapView.js";
 import { renderOptions, clearOptions, handleKeyboardNavigation } from "./components/optionsList.js";
-import { initDrawer } from "./drawer.js";
+import { initDrawer } from "./components/drawer.js";
 
 
 // --------------------------------------
