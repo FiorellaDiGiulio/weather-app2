@@ -1,97 +1,137 @@
 // optionsList.js
-// ===============================
-// Hanterar listan med stadsförslag
-// ===============================
+// ======================================
+// Hanterar dropdown med städer
+// Fokus stannar i input tills pil/tab
+// Highlight flyttas med mus eller tangentbord
+// ======================================
 
 let selectedIndex = -1;
 let currentOptions = [];
-let hoverIndex = -1;          // temporär musmarkering
-let mouseleaveAttached = false; // så vi inte lägger till fler lyssnare än en
 
+// ------------------------------
+// 1. Rensa listan
+// ------------------------------
 export function clearOptions() {
     const container = document.getElementById("cityOptions");
-    if (!container) return;
-
     container.innerHTML = "";
+    container.classList.add("hidden");
     selectedIndex = -1;
-    hoverIndex = -1;
     currentOptions = [];
 }
 
+// ------------------------------
+// 2. Rendera alternativ
+// ------------------------------
 export function renderOptions(matches, onSelect) {
     const container = document.getElementById("cityOptions");
-    if (!container) return;
-
-    // Töm listan + nollställ index
     clearOptions();
 
-    // Lägg bara till mouseleave EN gång
-    if (!mouseleaveAttached) {
-        container.addEventListener("mouseleave", () => {
-            hoverIndex = -1;      // släpp musmarkeringen
-            highlightOption();    // visa tangentbordsmarkeringen igen (om någon)
-        });
-        mouseleaveAttached = true;
-    }
+    // Visa INTE listan om bara 1 match
+    if (matches.length <= 1) return;
 
-    // Skapa en knapp per träff
+    container.classList.remove("hidden");
+
     matches.forEach((match, index) => {
         const btn = document.createElement("button");
         btn.textContent = `${match.name}, ${match.country}`;
         btn.className = "city-option";
-        btn.setAttribute("tabindex", "0");
 
-        // MUSMARKERING (temporär highlight)
-        btn.addEventListener("mouseenter", () => {
-            hoverIndex = index;
-            highlightOption();
-        });
+        // Kan tabbas inom listan, men inte innan man gått in dit
+        btn.setAttribute("tabindex", "-1");
+        btn.setAttribute("role", "option");
 
-        // MUSKLICK = välj stad
+        // MUS: välj stad
         btn.addEventListener("click", () => onSelect(match));
+
+        // MUS: highlight (flyttar inte fokus)
+        btn.addEventListener("mouseenter", () => {
+            selectedIndex = index;
+            updateHighlight(false);
+        });
 
         currentOptions.push(btn);
         container.appendChild(btn);
     });
 
-    // Förvald markering med tangentbord
-    if (currentOptions.length > 0) {
-        selectedIndex = 0;
-        highlightOption();
-    }
+    // Visuell highlight på första item (utan fokusflytt)
+    selectedIndex = 0;
+    updateHighlight(false);
 }
 
-export function highlightOption() {
-    if (!currentOptions || currentOptions.length === 0) return;
+// ------------------------------
+// 3. Uppdatera highlight
+// ------------------------------
+function updateHighlight(shouldFocus) {
+    currentOptions.forEach((btn, index) => {
+        const active = index === selectedIndex;
 
-    currentOptions.forEach((btn, idx) => {
-        // Visuell markering: hover prioriteras när musen är över listan
-        if (hoverIndex >= 0) {
-            btn.classList.toggle("selected", idx === hoverIndex);
-        } else {
-            btn.classList.toggle("selected", idx === selectedIndex);
+        btn.classList.toggle("selected", active);
+
+        // Flytta fokus ENDAST om vi vet att användaren
+        // navigerar med tangentbord (pil/tab)
+        if (active && shouldFocus) {
+            btn.focus();
         }
     });
 }
 
+// ------------------------------
+// 4. Tangentbordsnavigation
+// ------------------------------
 export function handleKeyboardNavigation(event, onSelect) {
-    if (!currentOptions || currentOptions.length === 0) return;
+    if (currentOptions.length === 0) return;
 
-    if (event.key === "ArrowDown") {
-        event.preventDefault();
-        selectedIndex = (selectedIndex + 1) % currentOptions.length;
-        hoverIndex = -1; // tangentbord tar över
-        highlightOption();
-    }
-    else if (event.key === "ArrowUp") {
-        event.preventDefault();
-        selectedIndex = (selectedIndex - 1 + currentOptions.length) % currentOptions.length;
-        hoverIndex = -1;
-        highlightOption();
-    }
-    else if (event.key === "Enter" && selectedIndex >= 0) {
-        event.preventDefault();
-        // trigga samma som klick
-        currentOptions[selectedIndex].click();
+    const activeId = document.activeElement.id;
+
+    switch (event.key) {
+
+        case "ArrowDown":
+            event.preventDefault();
+
+            // Första pilnedtrycket: gå från input -> första i listan
+            if (activeId === "input") {
+                selectedIndex = 0;
+                updateHighlight(true);
+                return;
+            }
+
+            // Navigera i listan
+            selectedIndex = (selectedIndex + 1) % currentOptions.length;
+            updateHighlight(true);
+            break;
+
+        case "ArrowUp":
+            // Upp-pil gör inget om vi fortfarande är i input
+            if (activeId === "input") return;
+
+            event.preventDefault();
+            selectedIndex =
+                (selectedIndex - 1 + currentOptions.length) % currentOptions.length;
+            updateHighlight(true);
+            break;
+
+        case "Tab":
+            // TAB från input: hoppa in i listan på första alternativet
+            if (activeId === "input") {
+                event.preventDefault();
+                selectedIndex = 0;
+                updateHighlight(true);
+            }
+            // TAB när vi redan är i listan: låt browsern sköta det
+            break;
+
+        case "Enter":
+            // VIKTIGT:
+            // - Om fokus är i input → låt main.js ta Enter (direktval)
+            // - Om fokus är i listan → välj markerat alternativ
+            if (activeId === "input") {
+                return; // main.js har en egen Enter-lyssnare
+            }
+
+            event.preventDefault();
+            if (currentOptions[selectedIndex]) {
+                currentOptions[selectedIndex].click();
+            }
+            break;
     }
 }

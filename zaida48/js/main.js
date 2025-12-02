@@ -13,27 +13,25 @@ import { initDrawer } from "./components/drawer.js";
 
 
 // --------------------------------------
-// DOM-element (ALLT på ett ställe)
+// DOM-element
 // --------------------------------------
 const cityInput = document.getElementById("input");
 const cityOptions = document.getElementById("cityOptions");
-
 const layout = document.querySelector(".layout");
 const weatherInfo = document.getElementById("weatherInfo");
 const cityMap = document.getElementById("cityMap");
-
 const savedContainer = document.getElementById("savedCards");
 
 
 // --------------------------------------
-// INITIERA DRAWER (ska ske efter DOM-queries)
+// Initiera drawer (om modulen finns i HTML)
 // --------------------------------------
 initDrawer();
 
 
-// --------------------------------------
-// 1. HANTERA INPUT + EXACT MATCHES
-// --------------------------------------
+// -------------------------------------------------
+// 1. INPUT TYPING → Hämta träffar & visa alternativ
+// -------------------------------------------------
 cityInput.addEventListener("input", async () => {
     const text = cityInput.value.trim();
 
@@ -42,73 +40,93 @@ cityInput.addEventListener("input", async () => {
         return;
     }
 
-    // Hämta alla träffar
     const allMatches = await cityApi(text);
 
-    // Endast namn som börjar exakt med texten
-    const exactMatches = allMatches.filter(city =>
-        city.name.toLocaleLowerCase("sv-SE")
-            .startsWith(text.toLocaleLowerCase("sv-SE"))
+    // FILTRERA exact start-match (t.ex. "Gö" → visar "Göteborg")
+    const exactStarts = allMatches.filter(city =>
+        city.name.toLowerCase().startsWith(text.toLowerCase())
     );
 
-    if (exactMatches.length === 0) {
+    // Sortera störst → minst befolkning
+    exactStarts.sort((a, b) => (b.population || 0) - (a.population || 0));
+
+    // Visa dropdown ENDAST om fler än 1 alternativ
+    if (exactStarts.length > 1) {
+        renderOptions(exactStarts, selectCity);
+    } else {
         clearOptions();
-        return;
     }
-
-    // Sortera (största städer först)
-    exactMatches.sort((a, b) => (b.population || 0) - (a.population || 0));
-
-    // Se om alla är i samma land
-    const bestMatch = exactMatches[0];
-    const allSameCountry = exactMatches.every(c => c.country === bestMatch.country);
-
-    // Om samma land, visa bara bästa träffen
-    if (allSameCountry) {
-        renderOptions([bestMatch], selectCity);
-        return;
-    }
-
-    // Annars: visa flera val
-    renderOptions(exactMatches, selectCity);
 });
 
 
-// --------------------------------------
-// 2. KEYBOARD NAVIGATION
-// --------------------------------------
+// -------------------------------------------------
+// 2. Piltangenter i input
+// -------------------------------------------------
 cityInput.addEventListener("keydown", (event) => {
     handleKeyboardNavigation(event, selectCity);
 });
 
 
-// --------------------------------------
-// 3. VÄLJ STAD (klick eller enter)
-// --------------------------------------
+// -------------------------------------------------
+// 3. ENTER i input → välj direkt om det är möjligt
+// -------------------------------------------------
+cityInput.addEventListener("keydown", async (event) => {
+    if (event.key !== "Enter") return;
+
+    event.preventDefault();
+
+    const text = cityInput.value.trim();
+    if (!text) return;
+
+    const allMatches = await cityApi(text);
+
+    // EXAKT match
+    const exactMatch = allMatches.find(
+        (c) => c.name.toLowerCase() === text.toLowerCase()
+    );
+
+    if (exactMatch) {
+        selectCity(exactMatch);
+        return;
+    }
+
+    // OM BARA 1 TRÄFF → välj automatiskt
+    if (allMatches.length === 1) {
+        selectCity(allMatches[0]);
+        return;
+    }
+
+    // annars: gör ingenting → användaren måste välja ur listan
+});
+
+
+// -------------------------------------------------
+// 4. När användaren väljer en stad
+// -------------------------------------------------
 async function selectCity(cityObj) {
     clearOptions();
     cityInput.value = cityObj.name;
 
-    // 1. Hämta väder
+    // 1. Hämta väderdata
     const weather = await weatherApi(cityObj.latitude, cityObj.longitude);
 
-    // Lägg in översatt väderkod
+    // Översätt väderkod
     weather.weather[0].description = translateWeatherCode(weather.weather[0].code);
-    weather.name = cityObj.name;
 
-    // Lägg in koordinater direkt i objektet
+    // Lägg in nödvändiga properties
+    weather.name = cityObj.name;
     weather.lat = cityObj.latitude;
     weather.lon = cityObj.longitude;
 
-    // 2. Skapa HUVUD-kortet + lägg in först
+    // 2. Skapa väderkort
     const card = new WeatherCard(weather).render();
     WeatherCard.insert(card);
 
-    // 3. Lägg till en klon i flärpens sparade kort
+    // 3. Lägg kortet i "sparade städer"
     const clone = card.cloneNode(true);
     savedContainer.appendChild(clone);
 
-    // 4. Visa layout + kartsektion
+    // 4. Visa layout och sektioner
     layout.classList.remove("hidden");
     weatherInfo.classList.remove("hidden");
     cityMap.classList.remove("hidden");
