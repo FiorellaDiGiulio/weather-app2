@@ -1,0 +1,8 @@
+*/
+!index.html
+!style.css
+!main.js
+!js/
+!js/**
+!css/
+!css/**
