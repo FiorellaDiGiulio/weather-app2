@@ -8,12 +8,12 @@ export class WeatherCard {
         this.data = weatherData; // inkluderar name, main.temp, description, lat, lon
     }
 
-    // 1. Skapa DOM-elementet
+    // 1. Skapa DOM-elementet utan innerHTML
     render() {
         const card = document.createElement("div");
         card.classList.add("card");
 
-        // Lat / Lon = unik identitet
+        // Unik identitet
         card.dataset.lat = this.data.lat;
         card.dataset.lon = this.data.lon;
 
@@ -23,23 +23,56 @@ export class WeatherCard {
             minute: "2-digit"
         });
 
-        card.innerHTML = `
-            <section role="region" aria-label="Väder för ${this.data.name}" aria-live="polite">
-                <h2 tabindex="0">${this.data.name}</h2>
-                <p tabindex="0">
-                    <span class="sr-only">Temperatur:</span>
-                    ${this.data.main.temp}°C
-                </p>
-                <p tabindex="0">
-                    <span class="sr-only">Väder:</span>
-                    ${this.data.weather[0].description}
-                </p>
-                <p tabindex="0">
-                    <span class="sr-only">Senast uppdaterad:</span>
-                    Uppdaterad: ${time}
-                </p>
-            </section>
-        `;
+        // === SECTION ===
+        const section = document.createElement("section");
+        section.setAttribute("role", "region");
+        section.setAttribute(
+            "aria-label",
+            `Väder för ${this.data.name}`
+        );
+        section.setAttribute("aria-live", "polite");
+
+        // === H2 ===
+        const title = document.createElement("h2");
+        title.tabIndex = 0;
+        title.textContent = this.data.name;
+
+        // === Temperatur ===
+        const tempP = document.createElement("p");
+        tempP.tabIndex = 0;
+
+        const tempLabel = document.createElement("span");
+        tempLabel.classList.add("sr-only");
+        tempLabel.textContent = "Temperatur:";
+
+        tempP.appendChild(tempLabel);
+        tempP.append(` ${this.data.main.temp}°C`);
+
+        // === Beskrivning ===
+        const descP = document.createElement("p");
+        descP.tabIndex = 0;
+
+        const descLabel = document.createElement("span");
+        descLabel.classList.add("sr-only");
+        descLabel.textContent = "Väder:";
+
+        descP.appendChild(descLabel);
+        descP.append(` ${this.data.weather[0].description}`);
+
+        // === Tidsstämpel ===
+        const timeP = document.createElement("p");
+        timeP.tabIndex = 0;
+
+        const timeLabel = document.createElement("span");
+        timeLabel.classList.add("sr-only");
+        timeLabel.textContent = "Senast uppdaterad:";
+
+        timeP.appendChild(timeLabel);
+        timeP.append(` Uppdaterad: ${time}`);
+
+        // === Bygg ihop kortet ===
+        section.append(title, tempP, descP, timeP);
+        card.appendChild(section);
 
         return card;
     }
