@@ -1,0 +1,13 @@
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+
+:focus {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
