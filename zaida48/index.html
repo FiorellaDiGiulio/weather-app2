@@ -18,7 +18,7 @@
         crossorigin=""
     ></script>
     
-    <title aria-label="Väderstation">Väderstation</title>
+    <title>Väderstation</title>
     <script type="module" src="./js/main.js"></script>
 </head>
 <body>
@@ -29,19 +29,28 @@
         <label class="sr-only" for="input">Skriv stad här</label>
         <input id="input" type="text" placeholder="Skriv stad här" aria-label="Skriv stad här" autocorrect="off" autocomplete="off" autocapitalize="off" spellcheck="false" inputmode="text">
         <button id="inputBtn" aria-label="Sök-knapp">
-            <img src="Bilder/cloud.svg" class="cloud cloud1" alt="Moln">
-            <img src="Bilder/cloud.svg" class="cloud cloud3" alt="Moln">
-            <img src="Bilder/search (1).svg" alt="Sök" class="btn-icon" />
+            <img src="Bilder/search_loggo.webp" alt="Sök" class="btn-icon" />
         </button>
-    </div>
-    <section id="cityOptions" aria-live="polite" aria-label="dropdown med alternativa städer"></section>
-   
-    <div class="layout hidden">
-        <section id="cityMap" class="hidden" aria-label="Staden på karta" tabindex="0"></section>
-        <section id="weatherInfo" class="hidden" aria-live="polite" aria-atomic="true" aria-label="Väderinformation" tabindex="0"></section>
-
-    </div>
-    
+            <!-- Dragbar flärp för sparade kort -->
+            <div id="saveDrawer" class="drawer closed">
+                <div id="drawerHandle" class="drawer-handle" aria-label="Öppna panel för sparade kort">
+                    ⠿
+                </div>
+                
+                <div class="drawer-content">
+                    <h3>Sparade städer</h3>
+                    <div id="savedCards" class="saved-cards"></div>
+                </div>
+            </div>
+        </div>
+        <section id="cityOptions" aria-live="polite" role="listbox" tabindex="0"></section>
+        
+        <div class="layout hidden">
+            <section id="cityMap" class="hidden" aria-label="Staden på karta" tabindex="0"></section>
+            <section id="weatherInfo" class="hidden" aria-live="polite" aria-atomic="true" aria-label="Väderinformation" tabindex="0"></section>
+            
+        </div>
+        
    
 </body>
 </html>
