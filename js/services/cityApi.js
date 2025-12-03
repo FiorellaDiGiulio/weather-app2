@@ -17,10 +17,11 @@ export async function cityApi(query) {
         
         // Om inga resultat → returera tom array
         if (!data.results) return [];
+        console.log("Här fanns det ingen data..");
 
         // Returnera ALLA råa träffar 
         return data.results;
-        console.log(data.results)
+        console.log(data.results);
 
     } catch (error) {
         console.error("cityApi error:", error);
