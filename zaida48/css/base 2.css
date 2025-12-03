@@ -1,0 +1,25 @@
+/* =============================
+   RESET / GLOBAL
+   ============================= */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+body {
+  background: var(--color-bg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: var(--font-base);
+  color: var(--color-surface);
+}
+
+p {
+    margin:0;
+}
+h2, h3, h4 {
+    margin: 0;
+}

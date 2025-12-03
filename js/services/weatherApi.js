@@ -1,6 +1,6 @@
 export async function weatherApi(lat, lon) {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=auto`;
-
+    const url = `http://stockholm2.onvo.se:81/api/v1/weather?latitude=${lat}&longitude=${lon}`;
+    
     try {
         const res = await fetch(url);
         if (!res.ok) throw new Error("Kunde inte hämta väder");
