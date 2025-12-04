@@ -1,0 +1,22 @@
+/* Färgvariabler och tema */
+:root {
+    --bg: #7acaff;
+    --text: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --card-text: #1b1b1b;
+    --secondary-text: #555555;
+    --accent: #005fcc;
+    --temp-color: #02336c;
+    --border: #cccccc;
+}
+
+:root[data-theme="dark"] {
+    --bg:  #1e1e1e;
+    --text: #f0f0f0;
+    --card-bg: rgba(40, 40, 40, 0.9);
+    --card-text: #ffffff;
+    --secondary-text: #cccccc;
+    --accent: #2C5387;
+    --temp-color: #ffffff;
+    --border: #444444;
+}

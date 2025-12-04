@@ -6,8 +6,8 @@ function setTheme(theme) {
     htmlEl.setAttribute("data-theme", theme);
     localStorage.setItem("theme", theme);
 
-    const icon = theme === "dark" ? "🌙" : "🌞";
-    const text = theme === "dark" ? "Mörk" : "Ljus";
+    const icon = theme === "dark" ? "🌞" : "🌙";
+    const text = theme === "dark" ? "Ljus" : "mörk";
 
     themeToggle.querySelector(".toggle-icon").textContent = icon;
     themeToggle.querySelector(".toggle-text").textContent = text;

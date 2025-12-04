@@ -1,0 +1,23 @@
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.app-title {
+    text-align: center;
+    color: var(--text);
+    margin-bottom: 15px;
+    font-size: 28px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}

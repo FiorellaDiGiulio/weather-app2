@@ -1,15 +1,16 @@
-import { weatherApi } from "../services/weatherApi.js";
+import { weatherApi, weeklyWeatherApi } from "../services/weatherApi.js";
 import { translateWeatherCode } from "../utility/translate.js";
 import { WeatherCard } from "./weathercard.js";
 import { showMap } from "./mapView.js";
 import { clearOptions } from "./optionsList.js";
+import { renderWeeklyForecast } from "./weeklyForecast.js";
 
 export class SavedCitiesManager {
-    constructor(cityInput, savedCitiesContainer, weatherInfo) {
+    constructor(cityInput, savedCitiesContainer, weatherInfo, weeklyContainer) {
         this.cityInput = cityInput;
         this.savedCitiesContainer = savedCitiesContainer;
         this.weatherInfo = weatherInfo;
-
+        this.weeklyContainer = weeklyContainer; // för veckoväder
         this.savedCities = JSON.parse(localStorage.getItem("savedCities")) || [];
     }
 
@@ -17,11 +18,10 @@ export class SavedCitiesManager {
         localStorage.setItem("savedCities", JSON.stringify(this.savedCities));
     }
 
-    // Renderar sparade städer som kort med temperatur
-    async renderSavedCities() {
+    async renderSavedCities(show = true) {
         this.savedCitiesContainer.innerHTML = "";
 
-        if (this.savedCities.length === 0) return;
+        if (!show || this.savedCities.length === 0) return;
 
         for (const city of this.savedCities) {
             const weather = await weatherApi(city.latitude, city.longitude);
@@ -30,12 +30,9 @@ export class SavedCitiesManager {
             let tempText = 0;
 
             if (weather) {
-                // Beskrivning
                 if (weather.weather && weather.weather[0]) {
                     weatherText = translateWeatherCode(weather.weather[0].code);
                 }
-
-                // Temperatur: fallback för olika API-format
                 if (weather.main?.temp !== undefined) {
                     tempText = Math.round(weather.main.temp);
                 } else if (weather.weather && weather.weather[0]) {
@@ -46,7 +43,7 @@ export class SavedCitiesManager {
             // Skapa kort
             const card = document.createElement("div");
             card.className = "city-card";
-            card.tabIndex = 0; // gör tabbbar
+            card.tabIndex = 0;
 
             const info = document.createElement("div");
             info.className = "city-info";
@@ -69,7 +66,21 @@ export class SavedCitiesManager {
             card.appendChild(info);
             card.appendChild(tempEl);
 
-            // Klick eller Enter: välj stad
+            // Kryss-knapp
+            const removeBtn = document.createElement("button");
+            removeBtn.className = "remove-btn";
+            removeBtn.textContent = "×";
+            removeBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                this.savedCities = this.savedCities.filter(
+                    c => !(c.name === city.name && c.country === city.country)
+                );
+                this.saveCities();
+                this.renderSavedCities();
+            });
+
+            card.appendChild(removeBtn);
+
             const selectHandler = () => this.selectCity(city);
             card.addEventListener("click", selectHandler);
             card.addEventListener("keydown", e => {
@@ -83,7 +94,6 @@ export class SavedCitiesManager {
         }
     }
 
-    // Väljer stad, sparar och visar väderkort + karta
     async selectCity(cityObj) {
         clearOptions();
         this.cityInput.value = cityObj.name;
@@ -93,12 +103,10 @@ export class SavedCitiesManager {
         );
 
         if (existingIndex === -1) {
-            // Max 3 sparade städer
             if (this.savedCities.length >= 3) this.savedCities.shift();
             this.savedCities.push(cityObj);
             this.saveCities();
         } else {
-            // Flytta senaste vald stad längst bak
             const [existingCity] = this.savedCities.splice(existingIndex, 1);
             this.savedCities.push(existingCity);
             this.saveCities();
@@ -106,22 +114,26 @@ export class SavedCitiesManager {
 
         await this.renderSavedCities();
 
+        // Dagens väder
         const weather = await weatherApi(cityObj.latitude, cityObj.longitude);
-        if (!weather) return;
+        if (weather) {
+            if (weather.weather && weather.weather[0]) {
+                weather.weather[0].description = translateWeatherCode(weather.weather[0].code);
+            }
+            weather.name = cityObj.name;
 
-        // Anpassa väderbeskrivning
-        if (weather.weather && weather.weather[0]) {
-            weather.weather[0].description = translateWeatherCode(weather.weather[0].code);
+            this.weatherInfo.innerHTML = "";
+            const card = new WeatherCard(weather);
+            this.weatherInfo.appendChild(card.render());
         }
-
-        weather.name = cityObj.name;
-
-        // Visa väderkort
-        this.weatherInfo.innerHTML = "";
-        const card = new WeatherCard(weather);
-        this.weatherInfo.appendChild(card.render());
 
         // Visa karta
         showMap(cityObj.latitude, cityObj.longitude);
+
+        // Veckoväder
+        if (this.weeklyContainer) {
+            const weeklyData = await weeklyWeatherApi(cityObj.latitude, cityObj.longitude);
+            renderWeeklyForecast(this.weeklyContainer, weeklyData);
+        }
     }
 }
