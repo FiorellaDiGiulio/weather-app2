@@ -1,0 +1,79 @@
+/* RESPONSIVITET */
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    .app-title {
+        font-size: 24px;
+    }
+
+    input {
+        font-size: 14px;
+    }
+
+    /* Kort blir vertikala på mobil */
+    .saved, .options {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .city-card, .city-option {
+        flex-direction: row;
+        justify-content: space-between;
+        min-height: auto;
+        padding: 10px 12px;
+    }
+
+    .city-temp {
+        margin-top: 0;
+    }
+
+    .city-name {
+        font-size: 14px;
+    }
+
+    .city-temp {
+        font-size: 16px;
+    }
+}
+
+/* RESPONSIVITET */
+@media (max-width: 480px) {
+    body {
+        padding: 12px;
+    }
+
+    .app-title {
+        font-size: 24px;
+    }
+
+    input {
+        font-size: 14px;
+    }
+
+    /* Kort blir vertikala på mobil */
+    .saved, .options {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .city-card, .city-option {
+        flex-direction: row;
+        justify-content: space-between;
+        min-height: auto;
+        padding: 10px 12px;
+    }
+
+    .city-temp {
+        margin-top: 0;
+    }
+
+    .city-name {
+        font-size: 14px;
+    }
+
+    .city-temp {
+        font-size: 16px;
+    }
+}
