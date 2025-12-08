@@ -1,0 +1,35 @@
+/* Ta bort webbläsarens defaultmarginaler och padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Gör bilder responsiva */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Gör knappar lättare att styla */
+button {
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+}
+
+/* Ta bort punktlistor */
+ul, ol {
+    list-style: none;
+}
+
+/* Säkerställ att formulär är konsistenta */
+input, button, textarea, select {
+    font: inherit;
+}
+
+/* Grundläggande läsbarhet */
+body {
+    line-height: 1.5;
+}

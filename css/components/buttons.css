@@ -1,0 +1,48 @@
+
+/* THEME TOGGLE KNAPP*/
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 2px solid var(--accent);
+    background-color: var(--card-bg);
+    color: var(--card-text);
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus {
+    background-color: var(--accent);
+    color: #fff;
+    outline: none;
+}
+
+.toggle-icon {
+    font-size: 18px;
+}
+
+.toggle-text {
+    text-transform: uppercase;
+}
+
+#searchBtn {
+    padding: 12px 18px;
+    border: none;
+    background-color: var(--accent);
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+}
+
+#searchBtn:hover,
+#searchBtn:focus {
+    background-color: #003f99;
+    outline: none;
+}
