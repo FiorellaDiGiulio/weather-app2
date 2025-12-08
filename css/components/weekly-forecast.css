@@ -1,18 +1,17 @@
 /* Veckans väder – wrapper */
 .weekly-forecast {
     display: flex;
-    flex-wrap: nowrap;            /* inga radbrytningar på stora skärmar */
+    flex-wrap: nowrap;
     gap: 12px;
     margin-top: 20px;
     justify-content: space-between; 
-    overflow-x: auto;            /* tillåt scroll om fönstret blir för smalt */
 }
 
 /* Enskilda kort */
 .weekly-card {
-    flex: 1 1 0;                 /* alla kort lika stora */
-    min-width: 30px;            /* minsta storlek */
-    max-width: 140px;            /* justera efter önskemål */
+    flex: 1 1 0;
+    min-width: 30px;
+    max-width: 140px;
     display: flex;
     flex-direction: column;
     align-items: center;
