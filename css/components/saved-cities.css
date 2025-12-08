@@ -1,28 +1,25 @@
-/* ===============================
-   📁 SAVED CITIES GRID
-=============================== */
+/* ================================================================
+   SAVED CITIES — MOBILE FIRST
+================================================================ */
+
 .saved {
-    margin-top: var(--space-m);                       /* 15px → tokens */
+    margin-top: var(--space-s);
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: var(--space-s);                              /* 12px → token */
+    grid-template-columns: 1fr;              /* Bas = mobil */
+    gap: var(--space-s);
 }
 
 
-/* ===============================
-   ❌ REMOVE BUTTON (delete city)
-=============================== */
+/* REMOVE BUTTON */
 .city-card .remove-btn {
     position: absolute;
-    top: var(--space-xs);                             /* 8px → token */
-    right: var(--space-xs);
-
+    top: var(--space-xxs);
+    right: var(--space-xxs);
     width: 24px;
     height: 24px;
-    background: color-mix(in srgb, var(--text) 20%, transparent 80%); /* följer theme */
     border: none;
     border-radius: var(--radius-round);
-
+    background: color-mix(in srgb, var(--text) 20%, transparent 80%);
     color: var(--card-text);
     font-size: var(--font-size-sm);
     cursor: pointer;
@@ -31,12 +28,21 @@
     align-items: center;
     justify-content: center;
 
-    transition: background var(--speed-fast), 
-                transform var(--speed-fast);
+    transition: background var(--speed-fast), transform var(--speed-fast);
 }
 
-/* Hover feedback — mjuk & modern */
 .city-card .remove-btn:hover {
     background: color-mix(in srgb, var(--text) 40%, transparent 60%);
-    transform: scale(1.08); /* klick-känsla */
+    transform: scale(1.08);
+}
+
+
+/* ================================================================
+   SCALE UP — TABLET + DESKTOP
+================================================================ */
+
+@media (min-width: var(--bp-sm)) {
+    .saved {
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
 }

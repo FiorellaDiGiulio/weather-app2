@@ -1,25 +1,27 @@
-/* ===============================
-   📅 WEEKLY FORECAST WRAPPER
-=============================== */
+/* ================================================================
+   WEEKLY FORECAST — MOBILE FIRST
+================================================================ */
+
+/* Wrapper för veckans kort – scrollvänlig på mobil */
 .weekly-forecast {
+    width: 100%;
     display: flex;
-    flex-wrap: nowrap;
-    gap: var(--space-s);                       /* 12px → token */
-    margin-top: var(--space-l);
-    justify-content: space-between;
+    flex-wrap: nowrap;                 /* mobil = horisontell scroll */
+    gap: var(--space-s);
+    margin-top: var(--space-m);
     overflow-x: auto;
-    padding-bottom: var(--space-xs);           /* extra luft vid scroll */
-    scroll-snap-type: x mandatory;             /* smooth kortnavigering */
+    padding-bottom: var(--space-xs);
+
+    scroll-snap-type: x mandatory;     /* smooth scroll */
 }
 
-/* ===============================
-   ☁ ENKELT VECKOKORT
-=============================== */
+/* Standardkort – minsta view = mobil */
 .weekly-card {
     scroll-snap-align: start;
-    flex: 1 1 0;
-    min-width: 60px;
-    max-width: 140px;
+
+    flex: 0 0 auto;                    /* mobil = kort i rad, ej auto-bredd */
+    width: 90px;                       /* kompakt baseline */
+    min-height: 150px;
 
     display: flex;
     flex-direction: column;
@@ -28,31 +30,35 @@
 
     padding: var(--space-s);
     border-radius: var(--radius-l);
+
     background: var(--card-bg);
     color: var(--card-text);
-
-    box-shadow: var(--shadow-soft);
-    min-height: 160px;
     text-align: center;
-
-    transition: 
-        transform var(--speed-fast), 
+    
+    box-shadow: var(--shadow-soft);
+    transition:
         box-shadow var(--speed-normal),
+        transform var(--speed-fast),
         background var(--speed-normal);
 }
 
-.weekly-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-medium);
+/* Hover endast på pekplatta/dator */
+@media (hover: hover) {
+    .weekly-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-medium);
+    }
 }
 
-/* ===============================
-   🔤 TEXT I VECKOKORT
-=============================== */
+
+/* ================================================================
+   TEXT — MOBILE FIRST
+================================================================ */
+
 .weekly-card .day {
     font-weight: var(--weight-bold);
-    font-size: var(--font-size-md);
-    margin-bottom: var(--space-xxs);          /* 6px → token */
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--space-xxs);
 }
 
 .weekly-card .temp,
@@ -63,19 +69,29 @@
 }
 
 
-/* ===============================
-   📱 MOBILANPASSNING
-=============================== */
-@media (max-width: 480px) {
+/* ================================================================
+   SCALE UP — TABLET / DESKTOP
+================================================================ */
+
+@media (min-width: var(--bp-sm)) {
+
+    /* kort får plats i rutnät istället för horisontscroll */
     .weekly-forecast {
         flex-wrap: wrap;
         justify-content: space-between;
+        overflow-x: visible;
     }
 
     .weekly-card {
-        flex: 1 1 46%;                        /* två per rad */
-        min-width: 0;
-        margin-bottom: var(--space-s);
+        flex: 1 1 calc(50% - var(--space-s));   /* 2 i bredd */
+        width: auto;
+        min-height: 170px;
+        font-size: var(--font-size-md);
     }
 }
 
+@media (min-width: var(--bp-md)) {
+    .weekly-card {
+        flex: 1 1 calc(33.3% - var(--space-m));  /* 3 i bredd på bredare skärm */
+    }
+}
