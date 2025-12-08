@@ -40,18 +40,18 @@
     margin: 2px 0;
 }
 
-/* Mobilanpassning: två kort per rad */
+/* Mobilanpassning: ett kort per rad */
 @media (max-width: 480px) {
     .weekly-forecast {
         flex-wrap: wrap;          /* bryt rad */
-        justify-content: space-between;
+        justify-content: flex-start; /* eller center, beroende på önskad alignment */
     }
 
     .weekly-card {
-        flex: 1 1 40%;           /* två kort per rad */
-        min-width: 0;
-        max-width: 48%;
+        flex: 1 1 100%;           /* ett kort per rad */
+        max-width: 100%;
         margin-bottom: 12px;
     }
 }
+
 
