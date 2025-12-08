@@ -1,29 +1,56 @@
-/* ===== BASE — MOBILE FIRST ===== */
+/* ================================================================
+   GLOBAL BASE — MOBILE FIRST
+================================================================ */
 
+/* Typsnitt, bakgrund, färg — mobil baseline */
 body {
+    margin: 0;
     font-family: var(--font-family);
     background: var(--bg);
     color: var(--text);
-    padding: 12px;               /* mobil som default */
-    line-height: 1.5;
+    display: flex;
+    justify-content: center;
+    padding: 12px; /* mobil först */
+    transition: background 0.3s, color 0.3s;
 }
 
 .app-title {
-    font-size: 24px;             /* mobil default */
     text-align: center;
+    color: var(--text);
+    margin-bottom: var(--space-s);
+    font-size: 24px; /* mobil baseline */
+    font-weight: var(--weight-bold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
 }
 
-/* Inputer, knappar & UI ska vara designade för mobil baseline */
+/* === Bild & media default === */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* === Inputs default (mobil först) === */
 input {
     font-size: 14px;
 }
 
 
-/* ====== SCALE UP ON LARGER SCREENS ====== */
+/* ================================================================
+   SCALE UP — FÖR STÖRRE SKÄRMAR
+================================================================ */
+
 @media (min-width: var(--bp-sm)) {
+    body {
+        padding: var(--space-l);
+    }
+
     .app-title {
         font-size: 28px;
     }
+
     input {
         font-size: 16px;
     }

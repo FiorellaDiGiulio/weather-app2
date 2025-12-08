@@ -1,35 +1,41 @@
 /* ===============================
-   🔍 SEARCH BAR CONTAINER
+   🔍 SEARCH — MOBILE FIRST
 =============================== */
+
 .search-container {
     display: flex;
-    gap: var(--space-xs);                  /* 8px → token */
+    gap: var(--space-xs);              /* 8px → token */
     width: 100%;
 }
 
-/* ===============================
-   ✏ SEARCH INPUT FIELD
-=============================== */
+/* Mobil-baseline */
 input {
     flex: 1;
-    padding: var(--space-s);               /* 12px → token */
-    border-radius: var(--radius-m);        /* 10px → token */
+    padding: var(--space-s);           /* 12px → token */
+    border-radius: var(--radius-m);    /* 10px-ish */
     border: 2px solid var(--border);
-    
-    background: var(--card-bg);
+    font-size: 14px;                   /* mobil först */
+    background-color: var(--card-bg);
     color: var(--card-text);
-
-    font-size: var(--font-size-md);
-    transition: 
-        background var(--speed-normal), 
-        color var(--speed-normal), 
-        border-color var(--speed-normal), 
+    transition:
+        background var(--speed-normal),
+        color var(--speed-normal),
+        border-color var(--speed-normal),
         box-shadow var(--speed-normal);
 }
 
-/* Focus state — modern & mjuk med glow */
 input:focus {
-    border-color: var(--accent);
-    outline: none;
-    box-shadow: 0 0 6px color-mix(in srgb, var(--accent) 60%, transparent);
+    outline: 3px solid var(--accent);
+}
+
+
+/* ===============================
+   📏 STÖRRE SKÄRMAR (TABLET/UPPÅT)
+=============================== */
+
+@media (min-width: var(--bp-sm)) {
+    input {
+        font-size: 16px;
+        padding: var(--space-m);       /* lite mer luft på större skärm */
+    }
 }
