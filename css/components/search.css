@@ -1,41 +1,29 @@
-/* ===============================
+/* ================================================================
    🔍 SEARCH — MOBILE FIRST
-=============================== */
+================================================================ */
 
 .search-container {
     display: flex;
-    gap: var(--space-xs);              /* 8px → token */
+    gap: var(--space-xs);
     width: 100%;
 }
 
-/* Mobil-baseline */
+/* Input baseline */
 input {
     flex: 1;
-    padding: var(--space-s);           /* 12px → token */
-    border-radius: var(--radius-m);    /* 10px-ish */
+    padding: var(--space-s);
+    font-size: var(--font-size-sm);
+    border-radius: var(--radius-m);
     border: 2px solid var(--border);
-    font-size: 14px;                   /* mobil först */
-    background-color: var(--card-bg);
+    background: var(--card-bg);
     color: var(--card-text);
     transition:
         background var(--speed-normal),
-        color var(--speed-normal),
         border-color var(--speed-normal),
-        box-shadow var(--speed-normal);
+        box-shadow var(--speed-normal),
+        color var(--speed-normal);
 }
 
 input:focus {
     outline: 3px solid var(--accent);
-}
-
-
-/* ===============================
-   📏 STÖRRE SKÄRMAR (TABLET/UPPÅT)
-=============================== */
-
-@media (min-width: var(--bp-sm)) {
-    input {
-        font-size: 16px;
-        padding: var(--space-m);       /* lite mer luft på större skärm */
-    }
 }

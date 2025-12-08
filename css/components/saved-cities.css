@@ -1,48 +1,37 @@
 /* ================================================================
-   SAVED CITIES — MOBILE FIRST
+   📍 SAVED CITIES — MOBILE FIRST
 ================================================================ */
 
 .saved {
-    margin-top: var(--space-s);
     display: grid;
-    grid-template-columns: 1fr;              /* Bas = mobil */
     gap: var(--space-s);
+    grid-template-columns: 1fr;
+    margin-top: var(--space-s);
 }
 
-
-/* REMOVE BUTTON */
+/* remove-knapp i favoritkort */
 .city-card .remove-btn {
     position: absolute;
     top: var(--space-xxs);
     right: var(--space-xxs);
+
     width: 24px;
     height: 24px;
     border: none;
     border-radius: var(--radius-round);
-    background: color-mix(in srgb, var(--text) 20%, transparent 80%);
     color: var(--card-text);
+
     font-size: var(--font-size-sm);
     cursor: pointer;
-
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 
+    background: color-mix(in srgb, var(--text) 20%, transparent 80%);
     transition: background var(--speed-fast), transform var(--speed-fast);
 }
 
 .city-card .remove-btn:hover {
     background: color-mix(in srgb, var(--text) 40%, transparent 60%);
     transform: scale(1.08);
-}
-
-
-/* ================================================================
-   SCALE UP — TABLET + DESKTOP
-================================================================ */
-
-@media (min-width: var(--bp-sm)) {
-    .saved {
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    }
 }

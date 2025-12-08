@@ -1,97 +1,45 @@
 /* ================================================================
-   WEEKLY FORECAST — MOBILE FIRST
+   📅 7-DAGARS VÄDERVY — MOBILE FIRST
 ================================================================ */
 
-/* Wrapper för veckans kort – scrollvänlig på mobil */
 .weekly-forecast {
-    width: 100%;
     display: flex;
-    flex-wrap: nowrap;                 /* mobil = horisontell scroll */
+    flex-wrap: nowrap;
+    overflow-x: auto;
     gap: var(--space-s);
     margin-top: var(--space-m);
-    overflow-x: auto;
+    scroll-snap-type: x mandatory;
     padding-bottom: var(--space-xs);
-
-    scroll-snap-type: x mandatory;     /* smooth scroll */
 }
 
-/* Standardkort – minsta view = mobil */
 .weekly-card {
-    scroll-snap-align: start;
-
-    flex: 0 0 auto;                    /* mobil = kort i rad, ej auto-bredd */
-    width: 90px;                       /* kompakt baseline */
+    flex: 0 0 auto;
+    width: 90px;
     min-height: 150px;
 
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
 
     padding: var(--space-s);
-    border-radius: var(--radius-l);
-
     background: var(--card-bg);
     color: var(--card-text);
-    text-align: center;
-    
+
+    border-radius: var(--radius-l);
     box-shadow: var(--shadow-soft);
-    transition:
-        box-shadow var(--speed-normal),
-        transform var(--speed-fast),
-        background var(--speed-normal);
+    text-align: center;
+
+    scroll-snap-align: start;
+    transition: transform var(--speed-fast), box-shadow var(--speed-normal);
 }
 
-/* Hover endast på pekplatta/dator */
-@media (hover: hover) {
-    .weekly-card:hover {
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-medium);
-    }
+@media (hover:hover) {
+    .weekly-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-medium); }
 }
 
-
-/* ================================================================
-   TEXT — MOBILE FIRST
-================================================================ */
-
-.weekly-card .day {
-    font-weight: var(--weight-bold);
-    font-size: var(--font-size-sm);
-    margin-bottom: var(--space-xxs);
-}
-
+/* Text i varje kort */
+.weekly-card .day { font-size: var(--font-size-sm); font-weight: var(--weight-bold); }
 .weekly-card .temp,
 .weekly-card .weather,
-.weekly-card .wind {
-    font-size: var(--font-size-sm);
-    margin: var(--space-xxs) 0;
-}
-
-
-/* ================================================================
-   SCALE UP — TABLET / DESKTOP
-================================================================ */
-
-@media (min-width: var(--bp-sm)) {
-
-    /* kort får plats i rutnät istället för horisontscroll */
-    .weekly-forecast {
-        flex-wrap: wrap;
-        justify-content: space-between;
-        overflow-x: visible;
-    }
-
-    .weekly-card {
-        flex: 1 1 calc(50% - var(--space-s));   /* 2 i bredd */
-        width: auto;
-        min-height: 170px;
-        font-size: var(--font-size-md);
-    }
-}
-
-@media (min-width: var(--bp-md)) {
-    .weekly-card {
-        flex: 1 1 calc(33.3% - var(--space-m));  /* 3 i bredd på bredare skärm */
-    }
-}
+.weekly-card .wind { font-size: var(--font-size-sm); margin: var(--space-xxs) 0; }

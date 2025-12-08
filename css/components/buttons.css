@@ -1,17 +1,22 @@
-/* ===============================
+/* ================================================================
    🌓 THEME TOGGLE BUTTON
-================================ */
+================================================================ */
+
 .theme-toggle {
     display: flex;
     align-items: center;
-    gap: var(--space-xs);                  /* 6px → design token */
-    padding: var(--space-xs) var(--space-s); /* 6px 12px → tokens */
+    gap: var(--space-xs);
+
+    padding: var(--space-xs) var(--space-s);
     border-radius: var(--radius-round);
     border: 2px solid var(--accent);
+
     background: var(--card-bg);
     color: var(--card-text);
+
     font-size: var(--font-size-sm);
     font-weight: var(--weight-medium);
+
     cursor: pointer;
     transition: background var(--speed-normal), color var(--speed-normal), border var(--speed-normal);
 }
@@ -20,27 +25,18 @@
 .theme-toggle:focus {
     background: var(--accent);
     color: var(--text);
-    outline: none;
 }
 
-.toggle-icon {
-    font-size: var(--font-size-lg);   /* 18px → tokenskala */
-}
+.toggle-icon { font-size: var(--font-size-lg); }
+.toggle-text { text-transform: uppercase; font-weight: var(--weight-bold); }
 
-.toggle-text {
-    text-transform: uppercase;
-    font-weight: var(--weight-bold);
-}
-
-/* ===============================
-   🔍 SEARCH BUTTON
-================================ */
+/* 🔍 Search button */
 #searchBtn {
-    padding: var(--space-s) var(--space-m);  /* 12px 18px → tokens */
+    padding: var(--space-s) var(--space-m);
     background: var(--accent);
     color: var(--text);
     border-radius: var(--radius-m);
-    border: none;
+
     font-weight: var(--weight-bold);
     cursor: pointer;
     transition: background var(--speed-normal);
@@ -49,5 +45,4 @@
 #searchBtn:hover,
 #searchBtn:focus {
     background: color-mix(in srgb, var(--accent) 80%, black 20%);
-    outline: none;
 }

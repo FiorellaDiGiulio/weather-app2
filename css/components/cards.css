@@ -1,108 +1,63 @@
 /* ================================================================
-   WEATHER CARD (HUVUDKORT) — MOBILE FIRST
+   🌤 WEATHER CARD (search result)
 ================================================================ */
 
 .card {
-    display: none; /* visas först vid sökning */
+    display: none;
     margin-top: var(--space-m);
+
     padding: var(--space-m);
     border-radius: var(--radius-l);
 
     background: var(--card-bg);
     color: var(--card-text);
+
     text-align: center;
     backdrop-filter: blur(10px);
-
     box-shadow: var(--shadow-soft);
-    transition:
-        box-shadow var(--speed-normal),
-        transform var(--speed-fast),
-        background var(--speed-normal);
+
+    transition: transform var(--speed-fast), background var(--speed-normal), box-shadow var(--speed-normal);
 }
 
-/* Hover endast där hover existerar */
-@media (hover: hover) {
-    .card:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-medium);
-    }
+@media (hover:hover) {
+    .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-medium); }
 }
-
 
 /* ================================================================
-   SAVED CITY CARD — MOBILE FIRST
+   📌 SAVED CITY CARDS UI
 ================================================================ */
 
 .city-card {
+    position: relative;
     display: flex;
-    flex-direction: column; /* mobil baseline */
+    flex-direction: column;
     justify-content: space-between;
-    padding: var(--space-s) var(--space-m);
+
     min-height: 100px;
+    padding: var(--space-s) var(--space-m);
 
     background: var(--card-bg);
     color: var(--card-text);
+
     border-radius: var(--radius-l);
     box-shadow: var(--shadow-soft);
     cursor: pointer;
-    position: relative;
 
-    transition:
-        transform var(--speed-fast),
-        background var(--speed-normal);
+    transition: transform var(--speed-fast), background var(--speed-normal);
 }
 
 .city-card:hover,
-.city-card:focus {
-    transform: translateY(-2px);
-    outline: 3px solid var(--accent);
-}
+.city-card:focus { transform: translateY(-2px); outline: 3px solid var(--accent); }
 
+/* Text-grupper */
+.city-info { display: flex; flex-direction: column; gap: var(--space-xxs); }
 
-/* ================================================================
-   TEXTINNEHÅLL — MOBILE FIRST
-================================================================ */
-
-.city-info {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-xxs);
-}
-
-.city-name {
-    font-size: var(--font-size-sm);
-    font-weight: var(--weight-medium);
-}
-
-.city-weather {
-    font-size: var(--font-size-sm);
-    color: var(--secondary-text);
-}
+.city-name { font-size: var(--font-size-sm); font-weight: var(--weight-medium); }
+.city-weather { font-size: var(--font-size-sm); color: var(--secondary-text); }
 
 .city-temp {
     margin-top: auto;
     font-size: var(--font-size-md);
     font-weight: var(--weight-bold);
     color: var(--temp-color);
-}
-
-
-/* ================================================================
-   SCALE UP — TABLET + LARGER SCREENS
-================================================================ */
-
-@media (min-width: var(--bp-sm)) {
-
-    .city-card {
-        flex-direction: row;       /* först här blir den horisontell */
-        align-items: center;
-    }
-
-    .city-name {
-        font-size: var(--font-size-md);
-    }
-
-    .city-temp {
-        font-size: var(--font-size-lg);
-    }
 }

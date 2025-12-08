@@ -1,9 +1,8 @@
 /* ======================================================
    RESET + BASE DESIGN LAYER
-   (För en ren, UI-stabil och tokenstyrd applikation)
+   (Stabil bas för UI + mobile-first)
 ====================================================== */
 
-/* Nollställ marginaler + förbättrad box-model */
 *,
 *::before,
 *::after {
@@ -12,7 +11,7 @@
     box-sizing: border-box;
 }
 
-/* Media skalas automatiskt */
+/* Media skalas korrekt */
 img,
 picture,
 video,
@@ -21,12 +20,18 @@ canvas {
     display: block;
 }
 
-/* Text på en linje bryts aldrig ur box av misstag */
+/* Typografi-beteende */
 p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
 }
 
-/* Knappar blir enklare att designa */
+/* Formelement följer design system */
+input, textarea, select {
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+}
+
+/* Knapp = ren komponentbas */
 button {
     border: none;
     background: none;
@@ -35,18 +40,10 @@ button {
     cursor: pointer;
 }
 
-/* Listor utan bullets som standard */
-ul, ol {
-    list-style: none;
-}
+/* Listor utan bullets by default */
+ul, ol { list-style: none; }
 
-/* Formkontroller följer typografi-systemet */
-input, textarea, select {
-    font-family: var(--font-family);
-    font-size: var(--font-size-md);
-}
-
-/* Bas-läsbarhet via tokens */
+/* Läsbarhet via token */
 body {
     line-height: var(--line-normal);
     font-family: var(--font-family);

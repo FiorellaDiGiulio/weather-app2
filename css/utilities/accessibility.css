@@ -1,13 +1,23 @@
+/* ================================================================
+   ♿ ACCESSIBILITY UTILITIES
+   Fokusmarkering + Screenreader support
+================================================================ */
 
+/* Visuell fokusmarkering för alla fokusbara element */
+:focus {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+/* Endast för tekniska hjälpmedel — dölj visuellt, läs upp i screen reader */
 .sr-only {
     position: absolute;
     width: 1px;
     height: 1px;
+    padding: 0;
     margin: -1px;
     overflow: hidden;
-}
-
-:focus {
-    outline: 3px solid var(--accent);
-    outline-offset: 3px;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
 }

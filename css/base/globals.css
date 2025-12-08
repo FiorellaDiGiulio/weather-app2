@@ -1,57 +1,35 @@
 /* ================================================================
-   GLOBAL BASE — MOBILE FIRST
-================================================================ */
+   GLOBAL BASE — Mobile-first baseline
+=============================================================== */
 
-/* Typsnitt, bakgrund, färg — mobil baseline */
 body {
-    margin: 0;
     font-family: var(--font-family);
     background: var(--bg);
     color: var(--text);
+    margin: 0;
+    padding: 12px; /* mobile-first */
     display: flex;
     justify-content: center;
-    padding: 12px; /* mobil först */
-    transition: background 0.3s, color 0.3s;
+    transition: background var(--speed-normal), color var(--speed-normal);
 }
 
+/* Titel */
 .app-title {
     text-align: center;
-    color: var(--text);
-    margin-bottom: var(--space-s);
-    font-size: 24px; /* mobil baseline */
+    font-size: var(--font-size-xl);
     font-weight: var(--weight-bold);
+    margin-bottom: var(--space-s);
+    color: var(--text);
     display: flex;
-    align-items: center;
-    justify-content: center;
     gap: var(--space-xs);
+    justify-content: center;
+    align-items: center;
 }
 
-/* === Bild & media default === */
-img {
-    max-width: 100%;
-    display: block;
-}
+/* Media default */
+img { max-width: 100%; display: block; }
 
-/* === Inputs default (mobil först) === */
-input {
-    font-size: 14px;
-}
+/* Input baseline */
+input { font-size: var(--font-size-sm); }
 
-
-/* ================================================================
-   SCALE UP — FÖR STÖRRE SKÄRMAR
-================================================================ */
-
-@media (min-width: var(--bp-sm)) {
-    body {
-        padding: var(--space-l);
-    }
-
-    .app-title {
-        font-size: 28px;
-    }
-
-    input {
-        font-size: 16px;
-    }
-}
+/* === Scale up (läggs sedan i responsive.css) === */

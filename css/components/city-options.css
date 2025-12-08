@@ -1,75 +1,37 @@
 /* ================================================================
-   CITY SEARCH DROPDOWN — MOBILE FIRST
-   Visas när användaren söker städer
+   🔍 CITY SUGGESTION DROPDOWN
 ================================================================ */
 
-/* Container för listan */
 #cityOptions {
-    width: 100%;
     display: flex;
     flex-direction: column;
-    gap: var(--space-s);                   /* 8–12px mobile baseline */
+    gap: var(--space-s);
+
     margin-top: var(--space-m);
     max-height: 300px;
     overflow-y: auto;
+    width: 100%;
 }
 
-/* Enskilt alternativ i listan */
+/* Items */
 .city-option {
-    width: 100%;
-    text-align: left;
     padding: var(--space-s) var(--space-m);
+    width: 100%;
 
     background: color-mix(in srgb, var(--text) 10%, var(--bg) 90%);
     border: 1px solid color-mix(in srgb, var(--text) 25%, transparent 75%);
-
     border-radius: var(--radius-l);
+
     color: var(--text);
     font-size: var(--font-size-md);
     font-weight: var(--weight-medium);
-
     cursor: pointer;
-    transition:
-        background var(--speed-normal),
-        border-color var(--speed-normal),
-        box-shadow var(--speed-normal),
-        transform var(--speed-fast);
+
+    transition: background var(--speed-normal), border-color var(--speed-normal), transform var(--speed-fast);
 }
 
-/* Markerat alternativ */
 .city-option.selected {
     background: color-mix(in srgb, var(--text) 30%, var(--bg) 70%);
     border: 2px solid var(--accent);
-    box-shadow: var(--shadow-medium);
     transform: translateY(-2px);
-}
-
-
-/* ================================================================
-   SCROLLBAR — MOBILE FIRST
-================================================================ */
-
-#cityOptions::-webkit-scrollbar {
-    width: 8px;
-}
-
-#cityOptions::-webkit-scrollbar-thumb {
-    background: color-mix(in srgb, var(--text) 20%, transparent 80%);
-    border-radius: var(--radius-s);
-}
-
-
-/* ================================================================
-   SCALE UP — STÖRRE SKÄRMAR
-================================================================ */
-
-@media (min-width: var(--bp-sm)) {
-    #cityOptions {
-        gap: var(--space-m);              /* större spacing på bredare yta */
-    }
-
-    .city-option {
-        font-size: var(--font-size-md);
-        border-radius: var(--radius-xl);
-    }
 }
