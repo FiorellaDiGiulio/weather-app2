@@ -1,42 +1,34 @@
 <!DOCTYPE html>
 <html lang="sv">
 
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-        <title>Väderapp</title>
-    
-        <!-- Content Security Policy -->
-        <meta http-equiv="Content-Security-Policy" content="
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Väderapp</title>
+
+    <meta http-equiv="Content-Security-Policy" content="
         default-src 'self';
         script-src 'self' https://unpkg.com;
         style-src 'self' https://unpkg.com 'unsafe-inline';
-        img-src 'self' https://unpkg.com data: https://{s}.tile.openstreetmap.org https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org;
-        connect-src 'self' https://api.open-meteo.com https://geocoding-api.open-meteo.com;
+        img-src 'self' https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org https://unpkg.com data:;
+        connect-src 'self' https://api.open-meteo.com https://geocoding-api.open-meteo.com https://unpkg.com;
+        font-src 'self' https://unpkg.com;
+        object-src 'none';
+        base-uri 'self';
     ">
-    
-    
-        <!-- Egen CSS -->
-        <link rel="stylesheet" href="style.css">
-    
-        <!-- Leaflet (karta) -->
-        <link
-            rel="stylesheet"
-            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-            integrity="sha384-..."
-            crossorigin="anonymous"
-        />
-        <script
-            defer
-            src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-            integrity="sha384-..."
-            crossorigin="anonymous"
-        ></script>
-    
-        <!-- Egen JS -->
-        <script type="module" src="./js/main.js"></script>
-    </head>
+
+    <!-- Egen CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Leaflet (karta) utan integrity -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- Egen JS -->
+    <script type="module" src="./js/main.js"></script>
+</head>
+
     
 
 <body>
