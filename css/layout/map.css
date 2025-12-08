@@ -1,19 +1,8 @@
+
 #cityMap {
     width: 100%;
-    height: 240px;
-    margin-top: var(--space-xl);
-    padding: 0;
-    border-radius: var(--radius-xl);
+    height: 220px;
+    margin-top: 20px;
+    border-radius: 15px;
     overflow: hidden;
-
-    background: color-mix(in srgb, var(--bg) 60%, transparent);
-    backdrop-filter: blur(14px) saturate(130%);
-    
-    box-shadow: var(--shadow-strong);
-    transition: transform var(--speed-fast), box-shadow var(--speed-normal);
-}
-
-#cityMap:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.35);
 }
