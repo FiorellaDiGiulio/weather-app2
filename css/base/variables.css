@@ -1,5 +1,7 @@
-/* Färgvariabler och tema */
 :root {
+    /* =========================
+       🎨 Colors
+    ========================== */
     --bg: #7acaff;
     --text: #ffffff;
     --card-bg: rgba(255, 255, 255, 0.9);
@@ -8,8 +10,52 @@
     --accent: #005fcc;
     --temp-color: #02336c;
     --border: #cccccc;
+
+    /* =========================
+       📏 Spacing Scale
+       (8px baseline system → UI-konsistens)
+    ========================== */
+    --space-xxs: 4px;
+    --space-xs: 8px;
+    --space-s: 12px;
+    --space-m: 16px;
+    --space-l: 24px;
+    --space-xl: 32px;
+    --space-xxl: 48px;
+
+    /* =========================
+       🔤 Typography
+    ========================== */
+    --font-base: 16px;
+    --font-sm: 14px;
+    --font-md: 18px;
+    --font-lg: 24px;
+    --font-xl: 32px;
+
+    /* =========================
+       🟦 Radius & UI-feel
+    ========================== */
+    --radius-s: 6px;
+    --radius-m: 10px;
+    --radius-l: 15px;
+    --radius-round: 100px;
+
+    /* =========================
+       🌫️ Depth & Shadows
+    ========================== */
+    --shadow-soft: 0 4px 8px rgba(0,0,0,0.12);
+    --shadow-medium: 0 6px 15px rgba(0,0,0,0.18);
+    --shadow-strong: 0 12px 30px rgba(0,0,0,0.22);
+
+    /* =========================
+       ⚡ Animations / Speed
+    ========================== */
+    --speed-fast: .15s;
+    --speed-normal: .3s;
+    --speed-slow: .6s;
 }
 
+/* 🌙 DARK MODE */
 :root[data-theme="dark"] {
     --bg:  #1e1e1e;
     --text: #f0f0f0;
@@ -19,4 +65,8 @@
     --accent: #2C5387;
     --temp-color: #ffffff;
     --border: #444444;
+
+    --shadow-soft: 0 4px 10px rgba(0,0,0,0.35);
+    --shadow-medium: 0 6px 18px rgba(0,0,0,0.45);
+    --shadow-strong: 0 12px 35px rgba(0,0,0,0.55);
 }
