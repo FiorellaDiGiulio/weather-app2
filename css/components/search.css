@@ -1,20 +1,35 @@
-
+/* ===============================
+   🔍 SEARCH BAR CONTAINER
+=============================== */
 .search-container {
     display: flex;
-    gap: 8px;
+    gap: var(--space-xs);                  /* 8px → token */
+    width: 100%;
 }
 
+/* ===============================
+   ✏ SEARCH INPUT FIELD
+=============================== */
 input {
     flex: 1;
-    padding: 12px;
-    border-radius: 10px;
+    padding: var(--space-s);               /* 12px → token */
+    border-radius: var(--radius-m);        /* 10px → token */
     border: 2px solid var(--border);
-    font-size: 16px;
-    background-color: var(--card-bg);
+    
+    background: var(--card-bg);
     color: var(--card-text);
-    transition: background 0.3s, color 0.3s, border 0.3s;
+
+    font-size: var(--font-size-md);
+    transition: 
+        background var(--speed-normal), 
+        color var(--speed-normal), 
+        border-color var(--speed-normal), 
+        box-shadow var(--speed-normal);
 }
 
+/* Focus state — modern & mjuk med glow */
 input:focus {
-    outline: 3px solid var(--accent);
+    border-color: var(--accent);
+    outline: none;
+    box-shadow: 0 0 6px color-mix(in srgb, var(--accent) 60%, transparent);
 }

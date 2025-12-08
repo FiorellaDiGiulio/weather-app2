@@ -1,29 +1,42 @@
-
+/* ===============================
+   📁 SAVED CITIES GRID
+=============================== */
 .saved {
-    margin-top: 15px;
+    margin-top: var(--space-m);                       /* 15px → tokens */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 12px;
+    gap: var(--space-s);                              /* 12px → token */
 }
 
+
+/* ===============================
+   ❌ REMOVE BUTTON (delete city)
+=============================== */
 .city-card .remove-btn {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: var(--space-xs);                             /* 8px → token */
+    right: var(--space-xs);
+
     width: 24px;
     height: 24px;
+    background: color-mix(in srgb, var(--text) 20%, transparent 80%); /* följer theme */
     border: none;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.2);
-    color: #373737;
-    font-size: 16px;
+    border-radius: var(--radius-round);
+
+    color: var(--card-text);
+    font-size: var(--font-size-sm);
     cursor: pointer;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s;
+
+    transition: background var(--speed-fast), 
+                transform var(--speed-fast);
 }
 
+/* Hover feedback — mjuk & modern */
 .city-card .remove-btn:hover {
-    background: rgba(255,255,255,0.4);
+    background: color-mix(in srgb, var(--text) 40%, transparent 60%);
+    transform: scale(1.08); /* klick-känsla */
 }
