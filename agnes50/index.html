@@ -4,33 +4,27 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Väderstation</title>
+    <title>Väderapp</title>
     <link rel="stylesheet" href="style.css">
 
     <!-- Leaflet (karta) -->
-    <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
-    <script
-        defer
-        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    ></script>
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script type="module" src="./js/main.js"></script>
+
 </head>
 
 <body>
 
     <main class="app">
 
-     <h1 class="app-title"> Väderapp
-        <button id="themeToggle" class="theme-toggle" aria-label="Växla mörkt/ljust tema">
-                <span class="toggle-icon">🌞</span>
-                <span class="toggle-text">Ljus</span>
-        </button> 
-    </h1>
-        
+    <h1 class="app-title"> Väderapp</h1>
+
+    <button id="themeToggle" class="theme-toggle" aria-label="Växla mörkt/ljust tema">
+        <span class="toggle-icon">🌞</span>
+        <span class="toggle-text">Ljus</span>
+    </button> 
+
         <div class="search-container">
             <label class="sr-only" for="input">Sök stad</label>
             <input id="input" type="text" placeholder="Sök stad..." autocomplete="off">
