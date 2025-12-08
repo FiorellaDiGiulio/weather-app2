@@ -4,7 +4,7 @@
 
 .weekly-forecast {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     overflow-x: auto;
     gap: var(--space-s);
     margin-top: var(--space-m);
@@ -39,7 +39,13 @@
 }
 
 /* Text i varje kort */
-.weekly-card .day { font-size: var(--font-size-sm); font-weight: var(--weight-bold); }
+.weekly-card .day { 
+    font-size: var(--font-size-sm);
+    font-weight: var(--weight-bold); 
+}
 .weekly-card .temp,
 .weekly-card .weather,
-.weekly-card .wind { font-size: var(--font-size-sm); margin: var(--space-xxs) 0; }
+.weekly-card .wind { 
+    font-size: var(--font-size-sm);
+    margin: var(--space-xxs) 0; 
+}
