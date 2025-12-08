@@ -1,57 +1,80 @@
-/* Veckans väder – wrapper */
+/* ===============================
+   📅 WEEKLY FORECAST WRAPPER
+=============================== */
 .weekly-forecast {
     display: flex;
-    flex-wrap: nowrap;            /* inga radbrytningar på stora skärmar */
-    gap: 12px;
-    margin-top: 20px;
-    justify-content: space-between; 
-    overflow-x: auto;            /* tillåt scroll om fönstret blir för smalt */
+    flex-wrap: nowrap;
+    gap: var(--space-s);                       /* 12px → token */
+    margin-top: var(--space-l);
+    justify-content: space-between;
+    overflow-x: auto;
+    padding-bottom: var(--space-xs);           /* extra luft vid scroll */
+    scroll-snap-type: x mandatory;             /* smooth kortnavigering */
 }
 
-/* Enskilda kort */
+/* ===============================
+   ☁ ENKELT VECKOKORT
+=============================== */
 .weekly-card {
-    flex: 1 1 0;                 /* alla kort lika stora */
-    min-width: 30px;            /* minsta storlek */
-    max-width: 140px;            /* justera efter önskemål */
+    scroll-snap-align: start;
+    flex: 1 1 0;
+    min-width: 60px;
+    max-width: 140px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 12px;
-    border-radius: 12px;
+
+    padding: var(--space-s);
+    border-radius: var(--radius-l);
     background: var(--card-bg);
     color: var(--card-text);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    min-height: 160px;           /* gör alla lika höga */
+
+    box-shadow: var(--shadow-soft);
+    min-height: 160px;
     text-align: center;
-    transition: transform 0.2s, background 0.3s;
+
+    transition: 
+        transform var(--speed-fast), 
+        box-shadow var(--speed-normal),
+        background var(--speed-normal);
 }
 
-/* Text i korten */
+.weekly-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-medium);
+}
+
+/* ===============================
+   🔤 TEXT I VECKOKORT
+=============================== */
 .weekly-card .day {
-    font-weight: bold;
-    margin-bottom: 6px;
+    font-weight: var(--weight-bold);
+    font-size: var(--font-size-md);
+    margin-bottom: var(--space-xxs);          /* 6px → token */
 }
 
 .weekly-card .temp,
 .weekly-card .weather,
 .weekly-card .wind {
-    font-size: 14px;
-    margin: 2px 0;
+    font-size: var(--font-size-sm);
+    margin: var(--space-xxs) 0;
 }
 
-/* Mobilanpassning: två kort per rad */
+
+/* ===============================
+   📱 MOBILANPASSNING
+=============================== */
 @media (max-width: 480px) {
     .weekly-forecast {
-        flex-wrap: wrap;          /* bryt rad */
+        flex-wrap: wrap;
         justify-content: space-between;
     }
 
     .weekly-card {
-        flex: 1 1 40%;           /* två kort per rad */
+        flex: 1 1 46%;                        /* två per rad */
         min-width: 0;
-        max-width: 48%;
-        margin-bottom: 12px;
+        margin-bottom: var(--space-s);
     }
 }
-
