@@ -5,6 +5,7 @@
 ================================================================ */
 
 :root {
+    
     /* =========================
     Färger
     ========================== */
@@ -22,9 +23,9 @@
     --blue-soft: #9bd8ff;
     --red: #ff6363;
     --neutral: #e8e8e8;
-
+    
     /* =========================
-       📏 Spacing scale
+    📏 Spacing scale
     ========================== */
     --space-xxs: 4px;
     --space-xs: 8px;
@@ -33,48 +34,55 @@
     --space-l: 24px;
     --space-xl: 32px;
     --space-xxl: 48px;
-
+    
     /* =========================
-       🔤 Typography
+    🔤 Typography
     ========================== */
     --font-family: 'Inter', sans-serif;
-
+    
     --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;
     --font-size-md: 1rem;
     --font-size-lg: 1.25rem;
     --font-size-xl: 1.5rem;
     --font-size-xxl: 2rem;
-
+    
     --weight-light: 300;
     --weight-regular: 400;
     --weight-medium: 500;
     --weight-bold: 700;
-
+    
     --line-tight: 1.15;
     --line-normal: 1.35;
     --line-relaxed: 1.55;
-
+    
     /* =========================
-       🎛 Radius
+    🎛 Radius
     ========================== */
     --radius-s: 6px;
     --radius-m: 10px;
     --radius-l: 15px;
     --radius-xl: 25px;
     --radius-round: 999px;
-
+    
     /* =========================
-       🌫 Shadows
+    🌫 Shadows
     ========================== */
     --shadow-soft: 0 4px 8px rgba(0,0,0,0.12);
     --shadow-medium: 0 8px 18px rgba(0,0,0,0.18);
     --shadow-strong: 0 12px 32px rgba(0,0,0,0.25);
-
+    
     /* =========================
-       ⚡ Motion
+    ⚡ Motion
     ========================== */
     --speed-fast: .15s;
     --speed-normal: .3s;
     --speed-slow: .6s;
+    
+        /* =========================
+        Breakpoints – mobile-first structure
+        ========================== */
+        --bp-sm: 480px;
+        --bp-md: 768px;
+        --bp-lg: 1024px;
 }
