@@ -5,6 +5,23 @@
 ================================================================ */
 
 :root {
+    /* =========================
+    Färger
+    ========================== */
+    --bg: #7acaff;
+    --text: #ffffff;
+    --card-bg: rgba(255,255,255,0.9);
+    --card-text: #1b1b1b;
+    --secondary-text: #555555;
+    --accent: #005fcc;
+    --temp-color: #02336c;
+    --border: #cccccc;
+    
+    --green: #3ccf4e;
+    --yellow: #ffd447;
+    --blue-soft: #9bd8ff;
+    --red: #ff6363;
+    --neutral: #e8e8e8;
 
     /* =========================
        📏 Spacing scale
