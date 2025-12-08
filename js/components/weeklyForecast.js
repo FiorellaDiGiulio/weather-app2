@@ -2,7 +2,7 @@
 import { translateWeatherCode } from "../utility/translate.js";
 
 export function renderWeeklyForecast(container, weeklyData) {
-    container.innerHTML = ""; // tömmer gammalt innehåll
+    container.textContent = ""; // tömmer gammalt innehåll
 
     if (!weeklyData || !weeklyData.days) return;
 
