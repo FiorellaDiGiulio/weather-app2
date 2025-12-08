@@ -1,0 +1,130 @@
+/* CONTAINER */
+.weather-background {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -1;
+}
+
+
+/* --------------------------
+   🌧️  RAIN
+--------------------------- */
+.rain {
+  position: absolute;
+  width: 2px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.3);
+  bottom: 100%;
+  animation: rainFall linear infinite;
+}
+
+@keyframes rainFall {
+  to {
+    transform: translateY(110vh);
+  }
+}
+
+
+/* --------------------------
+   ❄️  SNOW
+--------------------------- */
+.snow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: snowFall linear infinite;
+}
+
+@keyframes snowFall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+
+/* --------------------------
+   ☀️  SUN / SUN GLOW
+--------------------------- */
+.sun-glow {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: 50px;
+  right: 50px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,150,0.9), rgba(255,200,0,0.4), rgba(255,150,0,0));
+  animation: glowPulse 5s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+
+/* --------------------------
+   ☁️  CLOUDS
+--------------------------- */
+.cloud {
+  position: absolute;
+  width: 200px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50px;
+  filter: blur(8px);
+  animation: cloudMove 60s linear infinite;
+}
+
+@keyframes cloudMove {
+  from { transform: translateX(-250px); }
+  to { transform: translateX(110vw); }
+}
+
+
+/* --------------------------
+   🌫️  FOG
+--------------------------- */
+.fog {
+  position: absolute;
+  width: 200%;
+  height: 100%;
+  background: rgba(200, 200, 200, 0.2);
+  filter: blur(20px);
+  animation: fogMove 20s linear infinite alternate;
+}
+
+@keyframes fogMove {
+  from { transform: translateX(-20%); }
+  to   { transform: translateX(20%); }
+}
+
+
+/* --------------------------
+   ⚡  LIGHTNING
+--------------------------- */
+.lightning {
+  position: absolute;
+  inset: 0;
+  background: white;
+  opacity: 0;
+  animation: lightningFlash 4s ease-in-out infinite;
+}
+
+@keyframes lightningFlash {
+  0%, 97%, 100% { opacity: 0; }
+  98% { opacity: 0.8; }
+  99% { opacity: 0; }
+}
