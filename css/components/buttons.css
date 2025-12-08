@@ -46,3 +46,10 @@
     background-color: #003f99;
     outline: none;
 }
+
+.theme-wrapper {
+    display: flex;
+    justify-content: center; /* centrerar horisontellt */
+    width: 100%;
+    margin-bottom: 12px;
+}
