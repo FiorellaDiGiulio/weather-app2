@@ -1,7 +1,15 @@
+/* ================================================================
+   🎨  DESIGN TOKENS — Weather App UI System
+   Här ligger alla variabler för färg, typografi, spacing, skuggor,
+   radius & animationer. Inga klasser eller styling här inne.
+================================================================ */
+
+/* =========================
+   ☀ LIGHT THEME (default)
+========================= */
 :root {
-    /* =========================
-       🎨 Colors
-    ========================== */
+
+    /* 🎨 Colors */
     --bg: #7acaff;
     --text: #ffffff;
     --card-bg: rgba(255, 255, 255, 0.9);
@@ -11,9 +19,15 @@
     --temp-color: #02336c;
     --border: #cccccc;
 
+    /* 🌈 Extended color palette (bra för UI-effekter) */
+    --green: #3ccf4e;
+    --yellow: #ffd447;
+    --blue-soft: #9bd8ff;
+    --red: #ff6363;
+    --neutral: #e8e8e8;
+
     /* =========================
-       📏 Spacing Scale
-       (8px baseline system → UI-konsistens)
+       📏 Spacing scale (8px-system)
     ========================== */
     --space-xxs: 4px;
     --space-xs: 8px;
@@ -26,47 +40,64 @@
     /* =========================
        🔤 Typography
     ========================== */
-    --font-base: 16px;
-    --font-sm: 14px;
-    --font-md: 18px;
-    --font-lg: 24px;
-    --font-xl: 32px;
+    --font-family: 'Inter', sans-serif;
+
+    --font-size-xs: 0.75rem;   /* 12px */
+    --font-size-sm: 0.875rem;  /* 14px */
+    --font-size-md: 1rem;      /* 16px base */
+    --font-size-lg: 1.25rem;   /* 20px */
+    --font-size-xl: 1.5rem;    /* 24px */
+    --font-size-xxl: 2rem;     /* 32px titles */
+
+    --weight-light: 300;
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-bold: 700;
+
+    --line-tight: 1.15;
+    --line-normal: 1.35;
+    --line-relaxed: 1.55;
 
     /* =========================
-       🟦 Radius & UI-feel
+       🎛 Radius (hörn)
     ========================== */
     --radius-s: 6px;
     --radius-m: 10px;
     --radius-l: 15px;
-    --radius-round: 100px;
+    --radius-xl: 25px;
+    --radius-round: 999px;
 
     /* =========================
-       🌫️ Depth & Shadows
+       🌫 Shadows & Depth
     ========================== */
     --shadow-soft: 0 4px 8px rgba(0,0,0,0.12);
-    --shadow-medium: 0 6px 15px rgba(0,0,0,0.18);
-    --shadow-strong: 0 12px 30px rgba(0,0,0,0.22);
+    --shadow-medium: 0 8px 18px rgba(0,0,0,0.18);
+    --shadow-strong: 0 12px 32px rgba(0,0,0,0.25);
 
     /* =========================
-       ⚡ Animations / Speed
+       ⚡ Motion & Speeds
     ========================== */
     --speed-fast: .15s;
     --speed-normal: .3s;
     --speed-slow: .6s;
 }
 
-/* 🌙 DARK MODE */
+
+/* =========================
+   🌙 DARK THEME OVERRIDE
+========================= */
 :root[data-theme="dark"] {
-    --bg:  #1e1e1e;
+    --bg: #1e1e1e;
     --text: #f0f0f0;
     --card-bg: rgba(40, 40, 40, 0.9);
     --card-text: #ffffff;
     --secondary-text: #cccccc;
-    --accent: #2C5387;
+    --accent: #2c5387;
     --temp-color: #ffffff;
     --border: #444444;
 
-    --shadow-soft: 0 4px 10px rgba(0,0,0,0.35);
-    --shadow-medium: 0 6px 18px rgba(0,0,0,0.45);
-    --shadow-strong: 0 12px 35px rgba(0,0,0,0.55);
+    /* stärkta skuggor i mörkt UI */
+    --shadow-soft: 0 4px 10px rgba(0,0,0,0.45);
+    --shadow-medium: 0 8px 20px rgba(0,0,0,0.55);
+    --shadow-strong: 0 12px 35px rgba(0,0,0,0.65);
 }
