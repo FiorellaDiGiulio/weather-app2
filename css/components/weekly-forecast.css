@@ -1,34 +1,36 @@
 .weekly-forecast {
-    display: flex;
+    width: 100%;
+    display: grid;
     flex-wrap: wrap;
     gap: var(--space-xs);
     margin-top: var(--space-l);
 }
 
 .weekly-card {
-    flex: 1 1 0;
-    min-width: 20px;
-    max-width: 140px;
-    display: block;
-    flex-direction: block;
-    align-items: center;
-
-    padding: var(--space-xs);
-    border-radius: var(--radius-l);
+    width: 100%;
+    height: 30px;
+    display:grid;
+    grid-auto-columns: 60px 1fr 1fr 1fr;
     background: var(--card-bg);
-    color: var(--card-text);
+    border-radius: var(--radius-l);
     box-shadow: var(--shadow-soft);
-
-    min-height: 160px;
-    text-align: center;
-
-    transition: transform var(--speed-fast),
-                background var(--speed-normal);
 }
 
 .weekly-card .day {
+    grid-column: 1;
     font-weight: var(--weight-bold);
     margin-bottom: var(--space-xs);
+}
+
+
+.weekly-card .temp {
+    grid-column: 2;
+}
+.weekly-card .weather {
+    grid-column: 3;
+}
+.weekly-card .wind {
+    grid-column: 4;
 }
 
 .weekly-card .temp,
@@ -36,4 +38,5 @@
 .weekly-card .wind {
     font-size: var(--font-size-sm);
     margin: 2px 0;
+    gap: var(--space-xs);
 }
