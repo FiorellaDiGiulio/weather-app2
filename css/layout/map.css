@@ -1,8 +1,14 @@
+/* ================================================================
+   🗺 CITY MAP — MOBILE FIRST
+   (visas först efter sökning via JS, CSS ändrar inget beteende)
+================================================================ */
 
 #cityMap {
     width: 100%;
-    height: 220px;
-    margin-top: 20px;
-    border-radius: 15px;
+    height: var(--map-height);          /* från tokens */
+    margin-top: var(--map-margin-top);
+    border-radius: var(--map-radius);
+
     overflow: hidden;
+    box-shadow: var(--shadow-soft);     /* extra UI-djup */
 }

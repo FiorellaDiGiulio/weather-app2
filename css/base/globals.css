@@ -1,10 +1,26 @@
+/* ================================================================
+   GLOBAL BASE — Mobile-first baseline
+===================================================================*/
+
 body {
     margin: 0;
     font-family: var(--font-family);
     background: var(--bg);
     color: var(--text);
+    margin: 0;
+    padding: 12px; /* mobile-first */
     display: flex;
     justify-content: center;
+    transition: background var(--speed-normal), color var(--speed-normal);
+}
+
+/* Titel */
+.app-title {
+    text-align: center;
+    font-size: var(--font-size-xl);
+    font-weight: var(--weight-bold);
+    margin-bottom: var(--space-s);
+    color: var(--text);
     padding: var(--space-m);
     transition: background var(--speed-normal), color var(--speed-normal);
 }
@@ -18,8 +34,18 @@ body {
     color: var(--text);
 
     display: flex;
-    align-items: center;
+    gap: var(--space-xs);
     justify-content: center;
+    align-items: center;
+}
+
+/* Media default */
+img { max-width: 100%; display: block; }
+
+/* Input baseline */
+input { font-size: var(--font-size-sm); }
+
+/* === Scale up (läggs sedan i responsive.css) === */
     gap: var(--space-xs);
 
     /* förbättrad textskugga med tokens */

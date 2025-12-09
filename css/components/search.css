@@ -1,18 +1,27 @@
+/* ================================================================
+   🔍 SEARCH — MOBILE FIRST
+================================================================ */
 
 .search-container {
     display: flex;
-    gap: 8px;
+    gap: var(--space-xs);
+    width: 100%;
 }
 
+/* Input baseline */
 input {
     flex: 1;
-    padding: 12px;
-    border-radius: 10px;
+    padding: var(--space-s);
+    font-size: var(--font-size-sm);
+    border-radius: var(--radius-m);
     border: 2px solid var(--border);
-    font-size: 16px;
-    background-color: var(--card-bg);
+    background: var(--card-bg);
     color: var(--card-text);
-    transition: background 0.3s, color 0.3s, border 0.3s;
+    transition:
+        background var(--speed-normal),
+        border-color var(--speed-normal),
+        box-shadow var(--speed-normal),
+        color var(--speed-normal);
 }
 
 input:focus {

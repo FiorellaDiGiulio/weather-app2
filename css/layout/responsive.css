@@ -1,79 +1,59 @@
-/* RESPONSIVITET (Fio) */
-@media (max-width: 480px) {
+/* ================================================================
+   RESPONSIVE OVERRIDES (endast  tablet/desktop)
+   All mobile-styling ligger nu i grundfilerna
+================================================================ */
+
+/* 🟦 Tablet – struktur förstoras */
+@media (min-width: 720px) {
+
     body {
-        padding: 12px;
+        padding: var(--space-m);
     }
 
     .app-title {
-        font-size: 24px;
+        font-size: var(--font-size-xl);
     }
 
     input {
-        font-size: 14px;
+        font-size: var(--font-size-md);
     }
 
-    /* Kort blir vertikala på mobil */
-    .saved, .options {
-        display: flex;
-        flex-direction: column;
+    /* Saved & Options lägger ut i grid/flex när skärmen räcker */
+    .saved,
+    .options {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     }
 
-    .city-card, .city-option {
+    /* Cards skalar upp och får mer spacing */
+    .city-card,
+    .city-option {
         flex-direction: row;
         justify-content: space-between;
+        padding: var(--space-s) var(--space-m);
         min-height: auto;
-        padding: 10px 12px;
+    }
+
+    .city-name {
+        font-size: var(--font-size-md);
     }
 
     .city-temp {
         margin-top: 0;
-    }
-
-    .city-name {
-        font-size: 14px;
-    }
-
-    .city-temp {
-        font-size: 16px;
+        font-size: var(--font-size-lg);
     }
 }
 
-/* RESPONSIVITET (Agnes) */
-@media (max-width: 480px) {
+
+/* 🟨 Desktop – större kartvy och luftigare helhet */
+@media (min-width: 900px) {
+
     body {
-        padding: 12px;
+        padding: var(--space-l);
     }
 
-    .app-title {
-        font-size: 24px;
-    }
-
-    input {
-        font-size: 14px;
-    }
-
-    /* Kort blir vertikala på mobil */
-    .saved, .options {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .city-card, .city-option {
-        flex-direction: row;
-        justify-content: space-between;
-        min-height: auto;
-        padding: 10px 12px;
-    }
-
-    .city-temp {
-        margin-top: 0;
-    }
-
-    .city-name {
-        font-size: 14px;
-    }
-
-    .city-temp {
-        font-size: 16px;
+    #cityMap {
+        height: calc(var(--map-height) * 1.4);
+        border-radius: var(--radius-xl);
     }
 }
