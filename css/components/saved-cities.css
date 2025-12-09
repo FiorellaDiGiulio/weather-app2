@@ -1,29 +1,31 @@
-
 .saved {
-    margin-top: 15px;
+    margin-top: var(--space-m);
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 12px;
+    gap: var(--space-s);
 }
 
 .city-card .remove-btn {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: var(--space-xs);
+    right: var(--space-xs);
     width: 24px;
     height: 24px;
     border: none;
-    border-radius: 50%;
+    border-radius: var(--radius-round);
+
     background: rgba(255,255,255,0.2);
-    color: #373737;
-    font-size: 16px;
+    color: var(--card-text);
+    font-size: var(--font-size-md);
     cursor: pointer;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background 0.2s;
+
+    transition: background var(--speed-fast);
 }
 
 .city-card .remove-btn:hover {
-    background: rgba(255,255,255,0.4);
+    background: rgba(255,255,255,0.35);
 }
