@@ -1,13 +1,13 @@
 .weekly-forecast {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--space-s);
+    gap: var(--space-xs);
     margin-top: var(--space-l);
 }
 
 .weekly-card {
     flex: 1 1 0;
-    min-width: 25px;
+    min-width: 20px;
     max-width: 140px;
     display: block;
     flex-direction: block;
