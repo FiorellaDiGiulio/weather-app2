@@ -12,7 +12,7 @@ body {
     background-color: var(--bg);
     color: var(--text);
     padding: var(--space-m);
-    
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -35,6 +35,10 @@ body {
     gap: var(--space-xs);
 
     text-shadow: var(--text-shadow-soft);
+}
+.app {
+    max-width: 710px;
+    display:grid
 }
 
 /* Standard layout för sektioner */
