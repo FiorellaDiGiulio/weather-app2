@@ -43,7 +43,12 @@
         margin-top: auto;
     }
 }
-
+.weekly-forecast {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    justify-content: space-between;
+}
 
 /* ============================================
    🖥 DESKTOP (min-width 900px)
