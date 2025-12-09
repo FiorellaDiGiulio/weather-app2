@@ -1,57 +1,78 @@
-
+/* ===============================
+   📍 CITY CARD
+=============================== */
 .city-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 12px 16px;
-    border-radius: 12px;
+
+    padding: var(--space-s) var(--space-m);     /* 12px 16px → TOKEN */
+    border-radius: var(--radius-l);             /* 12px → var(--radius-l) */
     background: var(--card-bg);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow-soft);             /* ersätter rgba-shadow */
+
     cursor: pointer;
-    transition: transform 0.2s, background 0.3s;
-    min-height: 100px;
     color: var(--card-text);
     position: relative;
+    min-height: 100px;
+
+    transition: 
+        transform var(--speed-fast),
+        background var(--speed-normal),
+        outline var(--speed-fast);
 }
 
 .city-card:hover,
 .city-card:focus {
     transform: translateY(-2px);
-    outline: 3px solid var(--accent);
+    outline: 2px solid var(--accent);
 }
 
+/* TEXTBLOCK I CITY CARD  */
 .city-info {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: var(--space-xxs);  /* 4px → token */
 }
 
 .city-name {
-    font-weight: bold;
-    font-size: 16px;
+    font-weight: var(--weight-bold);
+    font-size: var(--font-size-md);
     color: var(--card-text);
 }
 
 .city-weather {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
     color: var(--secondary-text);
 }
 
 .city-temp {
-    font-weight: bold;
-    font-size: 18px;
+    font-weight: var(--weight-bold);
+    font-size: var(--font-size-lg);
     color: var(--temp-color);
     margin-top: auto;
 }
 
-/* VÄDERKORT */
+
+/* ===============================
+   🌤 HUVUD-VÄDERKORT (weather card)
+=============================== */
 .card {
-    margin-top: 20px;
+    margin-top: var(--space-m);                  /* 20px → token */
+    padding: var(--space-l);                     /* 20px → token */
+
     background: var(--card-bg);
-    backdrop-filter: blur(10px);
-    padding: 20px;
-    border-radius: 15px;
+    border-radius: var(--radius-l);
     text-align: center;
     color: var(--card-text);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    backdrop-filter: blur(10px);
+
+    box-shadow: var(--shadow-medium);            /* Lyfter designen */
+    transition: box-shadow var(--speed-normal), 
+                transform var(--speed-fast);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-strong);
+    transform: translateY(-3px);
 }
