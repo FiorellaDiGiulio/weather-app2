@@ -3,7 +3,6 @@
     flex-wrap: wrap;
     gap: var(--space-s);
     margin-top: var(--space-l);
-    justify-content: space-between;
 }
 
 .weekly-card {
