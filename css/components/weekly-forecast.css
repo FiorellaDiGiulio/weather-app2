@@ -13,7 +13,7 @@
     flex-direction: block;
     align-items: center;
 
-    padding: var(--space-s);
+    padding: var(--space-xs);
     border-radius: var(--radius-l);
     background: var(--card-bg);
     color: var(--card-text);
