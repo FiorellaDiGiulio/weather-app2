@@ -13,10 +13,7 @@ body {
     color: var(--text);
     padding: var(--space-m);
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
+    
     line-height: var(--line-normal);
 }
 
@@ -24,27 +21,31 @@ body {
 .app-title {
     text-align: center;
     margin-bottom: var(--space-m);
-
+    
     font-size: var(--font-size-xl);
     font-weight: var(--weight-bold);
     color: var(--text);
-
+    
     display: flex;
     align-items: center;
     justify-content: center;
     gap: var(--space-xs);
-
+    
     text-shadow: var(--text-shadow-soft);
 }
 .app {
-    max-width: 710px;
-    display:grid
+    width: 100%;
+    display:grid;
+    grid-template-columns: 1fr;
+    padding: var( --space-xxs);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Standard layout för sektioner */
 section {
     width: 100%;
-    max-width: 700px;
 }
 
 /* Fokus – tillgänglighet */
