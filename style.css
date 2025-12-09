@@ -1,11 +1,19 @@
+/* =========================
+   BASE – måste ladda först
+   Mobile-first foundation
+========================= */
 @import url("./css/base/variables.css");
 @import url("./css/base/themes.css");
 @import url("./css/base/reset.css");
 @import url("./css/base/globals.css");
 
 @import url("./css/layout/map.css");
-@import url("./css/layout/responsive.css");
 
+
+
+/* =========================
+   COMPONENTS – mobile-first UI
+========================= */
 @import url("./css/components/buttons.css");
 @import url("./css/components/cards.css");
 @import url("./css/components/search.css");
@@ -14,5 +22,16 @@
 @import url("./css/components/weekly-forecast.css");
 @import url("./css/components/saved-cities.css");
 
+
+/* =========================
+   UTILITIES – små, riktade klasser
+========================= */
 @import url("./css/utilities/sr-only.css");
 @import url("./css/utilities/accessibility.css");
+
+
+/* =========================
+   RESPONSIVE OVERRIDES (tablet/desktop)
+   LADDAS SIST – alltid sist
+========================= */
+@import url("./css/layout/responsive.css");

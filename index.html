@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Väderapp</title>
+
+    <!-- Säkerhet --> 
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' https://unpkg.com;
+        style-src 'self' https://unpkg.com 'unsafe-inline';
+        img-src 'self' https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org https://unpkg.com data:;
+        connect-src 'self' https://api.open-meteo.com https://geocoding-api.open-meteo.com https://unpkg.com;
+        font-src 'self' https://unpkg.com;
+        object-src 'none';
+        base-uri 'self';">
+
     <link rel="stylesheet" href="style.css">
 
-    <!-- Leaflet (karta) -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script type="module" src="./js/main.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 
+    <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script type="module" src="./js/main.js"></script>
 </head>
 
 <body>
 
     <main class="app">
 
-    <h1 class="app-title"> Väderapp</h1>
+    <h1 class="app-title">Väderapp</h1>
 
-    <button id="themeToggle" class="theme-toggle" aria-label="Växla mörkt/ljust tema">
-        <span class="toggle-icon">🌞</span>
-        <span class="toggle-text">Ljus</span>
-    </button> 
+    <div class="theme-wrapper">
+        <button id="themeToggle" class="theme-toggle" aria-label="Växla mörkt/ljust tema">
+            <span class="toggle-icon">🌞</span>
+            <span class="toggle-text">Ljus</span>
+        </button> 
+    </div>
 
         <div class="search-container">
             <label class="sr-only" for="input">Sök stad</label>
@@ -41,11 +56,10 @@
         <section id="weatherInfo"></section>
 
         <!-- Veckans väder -->
-        <div id="weeklyForecast"></div>
+        <div id="weeklyForecast" aria-live="polite"></div>
 
         <!-- Sparade städer -->
         <section id="savedCities" class="saved"></section>
-
 
     </main>
 

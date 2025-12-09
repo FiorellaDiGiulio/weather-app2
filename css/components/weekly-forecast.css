@@ -17,6 +17,9 @@
     width: 90px;
     min-height: 150px;
 
+    flex: 1 1 0;
+    min-width: 30px;
+    max-width: 140px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -49,3 +52,19 @@
     font-size: var(--font-size-sm);
     margin: var(--space-xxs) 0; 
 }
+
+/* Mobilanpassning: ett kort per rad */
+@media (max-width: 480px) {
+    .weekly-forecast {
+        flex-wrap: wrap;          /* bryt rad */
+        justify-content: flex-start; /* eller center, beroende på önskad alignment */
+    }
+
+    .weekly-card {
+        flex: 1 1 100%;           /* ett kort per rad */
+        max-width: 100%;
+        margin-bottom: 12px;
+    }
+}
+
+

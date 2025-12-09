@@ -1,11 +1,19 @@
 /* ================================================================
    DESIGN TOKENS — Färger, spacing, typografi, skuggor, radius
    Bas för hela UI-systemet
-================================================================ */
 
 :root {
 
     /* === Colors === */
+   🎨  DESIGN TOKENS — Weather App UI System
+   Här ligger alla variabler för färg, typografi, spacing, skuggor,
+   radius & animationer. Inga klasser eller styling här inne.
+
+/* =========================
+   ☀ LIGHT THEME (default)
+:root {
+
+    /* 🎨 Colors */
     --bg: #7acaff;
     --text: #ffffff;
     --card-bg: rgba(255,255,255,0.9);

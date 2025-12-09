@@ -19,7 +19,7 @@ export class SavedCitiesManager {
     }
 
     async renderSavedCities(show = true) {
-        this.savedCitiesContainer.innerHTML = "";
+        this.savedCitiesContainer.textContent = "";
 
         if (!show || this.savedCities.length === 0) return;
 
@@ -122,7 +122,7 @@ export class SavedCitiesManager {
             }
             weather.name = cityObj.name;
 
-            this.weatherInfo.innerHTML = "";
+            this.weatherInfo.textContent = "";
             const card = new WeatherCard(weather);
             this.weatherInfo.appendChild(card.render());
         }

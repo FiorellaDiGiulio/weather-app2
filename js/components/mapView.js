@@ -12,6 +12,8 @@ export function showMap(lat, lon) {
     mapContainer.style.height = "200px";
     mapContainer.style.width = "100%";
 
+    mapContainer.setAttribute("aria-label", "Karta över vald stad");
+
     // Rensa gammal karta (Leaflet kräver remove)
     if (map !== null) {
         map.remove();
