@@ -1,5 +1,5 @@
 .weekly-forecast {
-    display: block;
+    display: flex;
     flex-wrap: wrap;
     gap: var(--space-s);
     margin-top: var(--space-l);
@@ -11,7 +11,7 @@
     min-width: 30px;
     max-width: 140px;
     display: block;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
 
