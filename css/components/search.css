@@ -1,20 +1,22 @@
-
 .search-container {
     display: flex;
-    gap: 8px;
+    gap: var(--space-xs);
 }
 
 input {
     flex: 1;
-    padding: 12px;
-    border-radius: 10px;
+    padding: var(--space-s);
+    border-radius: var(--radius-m);
     border: 2px solid var(--border);
-    font-size: 16px;
+    font-size: var(--font-size-md);
     background-color: var(--card-bg);
     color: var(--card-text);
-    transition: background 0.3s, color 0.3s, border 0.3s;
+    transition: background var(--speed-normal),
+                color var(--speed-normal),
+                border var(--speed-normal);
 }
 
 input:focus {
     outline: 3px solid var(--accent);
 }
+
