@@ -1,79 +1,75 @@
-/* RESPONSIVITET (Fio) */
-@media (max-width: 480px) {
+/* ============================================
+   📱 MOBILE-FIRST (gäller som standard)
+   All grundstil finns i komponentfilerna
+============================================ */
+
+
+/* ============================================
+   📲 TABLET (min-width 600px)
+============================================ */
+@media (min-width: 600px) {
+
     body {
-        padding: 12px;
+        padding: var(--space-l);
     }
 
     .app-title {
-        font-size: 24px;
+        font-size: var(--font-size-xxl);
     }
 
     input {
-        font-size: 14px;
+        font-size: var(--font-size-md);
     }
 
-    /* Kort blir vertikala på mobil */
-    .saved, .options {
-        display: flex;
+    .saved,
+    .options {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    .city-card,
+    .city-option {
         flex-direction: column;
-    }
-
-    .city-card, .city-option {
-        flex-direction: row;
-        justify-content: space-between;
-        min-height: auto;
-        padding: 10px 12px;
-    }
-
-    .city-temp {
-        margin-top: 0;
+        padding: var(--space-m);
+        min-height: 120px;
     }
 
     .city-name {
-        font-size: 14px;
+        font-size: var(--font-size-md);
     }
 
     .city-temp {
-        font-size: 16px;
+        font-size: var(--font-size-lg);
+        margin-top: auto;
     }
 }
 
-/* RESPONSIVITET (Agnes) */
-@media (max-width: 480px) {
+
+/* ============================================
+   🖥 DESKTOP (min-width 900px)
+============================================ */
+@media (min-width: 900px) {
+
     body {
-        padding: 12px;
+        padding: var(--space-xl);
     }
 
-    .app-title {
-        font-size: 24px;
+    .app {
+        max-width: 900px;
+        margin: auto;
     }
 
-    input {
-        font-size: 14px;
+    .saved,
+    .options {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     }
 
-    /* Kort blir vertikala på mobil */
-    .saved, .options {
-        display: flex;
-        flex-direction: column;
+    .city-card,
+    .city-option {
+        padding: var(--space-l);
     }
 
-    .city-card, .city-option {
-        flex-direction: row;
-        justify-content: space-between;
-        min-height: auto;
-        padding: 10px 12px;
-    }
-
-    .city-temp {
-        margin-top: 0;
-    }
-
-    .city-name {
-        font-size: 14px;
-    }
-
-    .city-temp {
-        font-size: 16px;
+    .weekly-forecast {
+        gap: var(--space-m);
     }
 }
