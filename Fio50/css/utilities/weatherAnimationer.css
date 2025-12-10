@@ -22,22 +22,23 @@
 /* ENDAST solstrålar – ingen sol */
 .sun-rays {
     position: absolute;
-    width: 450px;
-    height: 450px;
-    top: -5vh;          /* mer centrerat */
+    width: 550px;
+    height: 550px;
+    top: -10vh;
     left: 50%;
     transform: translateX(-50%);
     background: radial-gradient(
         circle,
-        rgba(255, 240, 180, 0.35) 0%,
-        rgba(255, 220, 130, 0.25) 30%,
-        rgba(255, 200, 100, 0.10) 60%,
-        transparent 90%
+        rgba(255, 240, 120, 0.55) 0%,   /* starkare gult i mitten */
+        rgba(255, 220, 70, 0.45) 25%,   /* klar gul kärna */
+        rgba(255, 190, 50, 0.25) 50%,   /* varmt gult sken */
+        rgba(255, 170, 60, 0.15) 70%,   /* gyllene glow */
+        transparent 95%
     );
-    animation: rayPulse 6s ease-in-out infinite;
+    animation: rayPulse 5.5s ease-in-out infinite;
     mix-blend-mode: screen;
     pointer-events: none;
-    filter: blur(2px);
+    filter: blur(4px); /* mer mjuk glow */
 }
 
 @keyframes rayPulse {
