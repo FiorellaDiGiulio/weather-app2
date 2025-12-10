@@ -1,0 +1,208 @@
+/* =========================================================================
+   GRUNDLAGER FÖR ALLA ANIMATIONER
+   ========================================================================= */
+
+#weather-animation {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: -1;
+}
+
+/* Bakgrundsgradient (styrd av JS via CSS-variabler) */
+.weather-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -2;
+    background: linear-gradient(to bottom, var(--top), var(--bottom));
+    transition: background 1.4s ease;
+}
+
+
+
+/* =========================================================================
+   ☀️ SOL + SOLSTRÅLAR
+   ========================================================================= */
+
+.sun {
+    position: absolute;
+    width: 140px;
+    height: 140px;
+    top: 10vh;
+    left: 70vw;
+    
+    border-radius: 50%;
+    background: radial-gradient(circle, #fff7a2 0%, #ffc857 50%, #ff9b1d 100%);
+    animation: sun-pulse 4s ease-in-out infinite;
+}
+
+@keyframes sun-pulse {
+    0% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.15); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.9; }
+}
+
+.sun-rays {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 5vh;
+    left: 65vw;
+    background: radial-gradient(circle, rgba(255,255,200,0.35), transparent 70%);
+    animation: rayPulse 5s ease-in-out infinite;
+    mix-blend-mode: screen;
+}
+
+@keyframes rayPulse {
+    0% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.3); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.5; }
+}
+
+
+
+/* =========================================================================
+   ☁️ REALISTISKA MOLN (PARALLAX)
+   ========================================================================= */
+
+.cloud {
+    position: absolute;
+
+    background: #ffffff;
+    border-radius: 120px;
+    width: var(--width, 240px);
+    height: var(--height, 80px);
+
+    filter: blur(8px);
+    opacity: var(--opacity, 0.6);
+
+    animation: cloud-move var(--speed, 40s) linear infinite;
+}
+
+@keyframes cloud-move {
+    from { transform: translateX(-40vw); }
+    to { transform: translateX(140vw); }
+}
+
+
+
+/* =========================================================================
+   🌧️ REALISTISKT REGN
+   ========================================================================= */
+
+.raindrop {
+    position: absolute;
+    width: 2px;
+    height: 18px;
+    background: rgba(255,255,255,0.7);
+    border-radius: 2px;
+    filter: blur(0.5px);
+    animation: raindrop-fall var(--speed, 0.6s) linear infinite;
+}
+
+@keyframes raindrop-fall {
+    to {
+        transform: translateY(120vh) translateX(var(--wind, 0px));
+        opacity: 0.15;
+    }
+}
+
+/* Droppar som rinner på skärmen */
+.raindrop-trail {
+    position: absolute;
+    width: 2px;
+    height: 90px;
+    background: rgba(255,255,255,0.15);
+    filter: blur(1px);
+    animation: rain-trail 2s linear infinite;
+}
+
+@keyframes rain-trail {
+    0% { transform: translateY(-20vh); opacity: 0; }
+    20% { opacity: 1; }
+    100% { transform: translateY(120vh); opacity: 0; }
+}
+
+
+
+/* =========================================================================
+   💨 VINDPARTIKLAR (små ljusa prickar som blåser i sidled)
+   ========================================================================= */
+
+.wind-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: wind-drift var(--speed, 6s) linear infinite;
+}
+
+@keyframes wind-drift {
+    0% { transform: translateX(-10vw) translateY(0); }
+    100% { transform: translateX(110vw) translateY(var(--rise)); }
+}
+
+
+
+/* =========================================================================
+   🌨️ REALISTISK SNÖ
+   ========================================================================= */
+
+.snowflake {
+    position: absolute;
+    color: white;
+    font-size: var(--size, 20px);
+    opacity: 0.9;
+    filter: blur(1px);
+    animation: snow-drift var(--speed, 6s) linear infinite;
+}
+
+@keyframes snow-drift {
+    0% { transform: translateY(-10vh) translateX(0); }
+    50% { transform: translateY(50vh) translateX(var(--drift)); }
+    100% { transform: translateY(110vh) translateX(calc(var(--drift) * -1)); }
+}
+
+
+
+/* =========================================================================
+   🌫️ DIMMA
+   ========================================================================= */
+
+.fog {
+    position: absolute;
+    width: 220%;
+    height: 220%;
+    background: rgba(255,255,255,0.25);
+    filter: blur(35px);
+    animation: fog-flow var(--speed, 20s) ease-in-out infinite;
+}
+
+@keyframes fog-flow {
+    0% { transform: translateX(-10%) translateY(-5%); }
+    50% { transform: translateX(10%) translateY(5%); }
+    100% { transform: translateX(-10%) translateY(-5%); }
+}
+
+
+
+/* =========================================================================
+   ⚡ ÅSKA
+   ========================================================================= */
+
+.thunder-flash {
+    position: absolute;
+    inset: 0;
+    background: white;
+    opacity: 0;
+    animation: flash var(--speed, 3s) infinite;
+}
+
+@keyframes flash {
+    0%, 92% { opacity: 0; }
+    93% { opacity: var(--intensity, 0.6); }
+    94% { opacity: 0; }
+}
