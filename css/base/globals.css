@@ -1,55 +1,55 @@
-/* ================================================================
-   GLOBALS – Basstil som gäller överallt
-================================================================ */
-
-html, body {
-    width: 100%;
-    min-height: 100%;
-}
+/* =====================================
+   GLOBALS — WCAG + MOBILE FIRST
+===================================== */
 
 body {
-    font-family: var(--font-family);
-    background-color: var(--bg);
+    background: var(--bg);
     color: var(--text);
     padding: var(--space-m);
-
-    
-    line-height: var(--line-normal);
 }
 
-/* Huvudrubrik */
-.app-title {
-    text-align: center;
-    margin-bottom: var(--space-m);
-    
+/* Typografi */
+h1 {
     font-size: var(--font-size-xl);
-    font-weight: var(--weight-bold);
-    color: var(--text);
-    
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--space-xs);
-    
-    text-shadow: var(--text-shadow-soft);
+    line-height: var(--line-tight);
 }
-.app {
-    width: 100%;
-    display:grid;
-    grid-template-columns: 1fr;
-    padding: var( --space-xxs);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+h2 {
+    font-size: var(--font-size-lg);
+}
+h3 {
+    font-size: var(--font-size-md);
 }
 
-/* Standard layout för sektioner */
-section {
-    width: 100%;
+/* Länkar */
+a {
+    color: var(--primary);
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
 }
 
-/* Fokus – tillgänglighet */
+/* Fokus – WCAG AA */
 :focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 4px;
+    outline: var(--focus-ring-width) solid var(--focus-ring-color);
+    outline-offset: var(--focus-ring-offset);
+}
+
+/* Ytor / boxar */
+.surface {
+    background: var(--surface);
+    border-radius: var(--radius-m);
+    box-shadow: var(--shadow-soft);
+    padding: var(--space-m);
+}
+
+/* Standard textstilar */
+p {
+    margin-bottom: var(--space-m);
+    font-size: var(--font-size-md);
+}
+
+/* Småtexter */
+small {
+    color: var(--text-muted);
 }
