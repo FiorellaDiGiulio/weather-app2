@@ -9,18 +9,15 @@ export function setWeatherAnimation(type) {
 
     switch (type) {
 
-        /* ☀️ SOL + solstrålar */
+        /* solstrålar */
         case "sun": {
-            const sun = document.createElement("div");
-            sun.className = "sun";
-            container.appendChild(sun);
-
+            // ⭐ ENDAST strålar - ingen sol
             const rays = document.createElement("div");
             rays.className = "sun-rays";
             container.appendChild(rays);
-
             break;
-        }
+}
+
 
         /* ☁️ MOLN (parallaxdjup) */
         case "cloud": {
