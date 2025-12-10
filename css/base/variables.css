@@ -11,7 +11,8 @@
 
     /* 🎨 Colors */
     --bg: #7acaff;
-    --text: #ffffff;
+    --text: #000000;
+    --button-text: #ffffff;
     --card-bg: rgba(255, 255, 255, 0.9);
     --card-text: #1b1b1b;
     --secondary-text: #555555;

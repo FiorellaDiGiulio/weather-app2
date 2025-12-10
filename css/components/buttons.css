@@ -27,7 +27,7 @@
     padding: var(--space-s) var(--space-m);
     border: none;
     background-color: var(--accent);
-    color: var(--color-white);
+    color: var(--button-text);
     border-radius: var(--radius-m);
     cursor: pointer;
     font-weight: var(--weight-medium);
