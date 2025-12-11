@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ================================================================
    🔍 SEARCH — MOBILE FIRST
 ================================================================ */
@@ -6,12 +7,18 @@
     display: flex;
     gap: var(--space-xs);
     width: 100%;
+=======
+.search-container {
+    display: flex;
+    gap: var(--space-xs);
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
 }
 
 /* Input baseline */
 input {
     flex: 1;
     padding: var(--space-s);
+<<<<<<< HEAD
     font-size: var(--font-size-sm);
     border-radius: var(--radius-m);
     border: 2px solid var(--border);
@@ -22,8 +29,19 @@ input {
         border-color var(--speed-normal),
         box-shadow var(--speed-normal),
         color var(--speed-normal);
+=======
+    border-radius: var(--radius-m);
+    border: 2px solid var(--border);
+    font-size: var(--font-size-md);
+    background-color: var(--card-bg);
+    color: var(--card-text);
+    transition: background var(--speed-normal),
+                color var(--speed-normal),
+                border var(--speed-normal);
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
 }
 
 input:focus {
     outline: 3px solid var(--accent);
 }
+

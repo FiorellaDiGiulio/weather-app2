@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ================================================================
    THEME: DARK MODE — overridear tokens, inget annat
 ================================================================ */
@@ -6,12 +7,23 @@
     --bg: #1e1e1e;
     --text: #f0f0f0;
     --card-bg: rgba(40,40,40,0.9);
+=======
+
+/* =========================
+   🌙 DARK THEME OVERRIDE
+========================= */
+:root[data-theme="dark"] {
+    --bg: #1e1e1e;
+    --text: #f0f0f0;
+    --card-bg: rgba(40, 40, 40, 0.9);
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
     --card-text: #ffffff;
     --secondary-text: #cccccc;
     --accent: #2c5387;
     --temp-color: #ffffff;
     --border: #444444;
 
+<<<<<<< HEAD
     --green: #2fbf44;
     --yellow: #e6c233;
     --blue-soft: #7eb4d9;
@@ -22,3 +34,10 @@
     --shadow-medium: 0 8px 20px rgba(0,0,0,0.55);
     --shadow-strong: 0 12px 35px rgba(0,0,0,0.65);
 }
+=======
+    /* stärkta skuggor i mörkt UI */
+    --shadow-soft: 0 4px 10px rgba(0,0,0,0.45);
+    --shadow-medium: 0 8px 20px rgba(0,0,0,0.55);
+    --shadow-strong: 0 12px 35px rgba(0,0,0,0.65);
+}
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68

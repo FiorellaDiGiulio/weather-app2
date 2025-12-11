@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ================================================================
    📅 7-DAGARS VÄDERVY — MOBILE FIRST
 ================================================================ */
@@ -10,6 +11,14 @@
     margin-top: var(--space-m);
     scroll-snap-type: x mandatory;
     padding-bottom: var(--space-xs);
+=======
+.weekly-forecast {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    margin-top: var(--space-l);
+    justify-content: space-between;
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
 }
 
 .weekly-card {
@@ -20,6 +29,7 @@
     flex: 1 1 0;
     min-width: 30px;
     max-width: 140px;
+<<<<<<< HEAD
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -39,6 +49,28 @@
 
 @media (hover:hover) {
     .weekly-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-medium); }
+=======
+    display: block;
+    flex-direction: row;
+    align-items: center;
+
+    padding: var(--space-s);
+    border-radius: var(--radius-l);
+    background: var(--card-bg);
+    color: var(--card-text);
+    box-shadow: var(--shadow-soft);
+
+    min-height: 160px;
+    text-align: center;
+
+    transition: transform var(--speed-fast),
+                background var(--speed-normal);
+}
+
+.weekly-card .day {
+    font-weight: var(--weight-bold);
+    margin-bottom: var(--space-xs);
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
 }
 
 /* Text i varje kort */
@@ -48,23 +80,13 @@
 }
 .weekly-card .temp,
 .weekly-card .weather,
+<<<<<<< HEAD
 .weekly-card .wind { 
     font-size: var(--font-size-sm);
     margin: var(--space-xxs) 0; 
+=======
+.weekly-card .wind {
+    font-size: var(--font-size-sm);
+    margin: 2px 0;
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
 }
-
-/* Mobilanpassning: ett kort per rad */
-@media (max-width: 480px) {
-    .weekly-forecast {
-        flex-wrap: wrap;          /* bryt rad */
-        justify-content: flex-start; /* eller center, beroende på önskad alignment */
-    }
-
-    .weekly-card {
-        flex: 1 1 100%;           /* ett kort per rad */
-        max-width: 100%;
-        margin-bottom: 12px;
-    }
-}
-
-

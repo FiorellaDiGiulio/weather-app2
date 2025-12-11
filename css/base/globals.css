@@ -1,4 +1,5 @@
 /* ================================================================
+<<<<<<< HEAD
    GLOBAL BASE — Mobile-first baseline
 ===================================================================*/
 
@@ -23,12 +24,34 @@ body {
     color: var(--text);
     padding: var(--space-m);
     transition: background var(--speed-normal), color var(--speed-normal);
+=======
+   GLOBALS – Basstil som gäller överallt
+================================================================ */
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
 }
 
-/* App-title / huvudrubrik */
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg);
+    color: var(--text);
+    padding: var(--space-m);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    line-height: var(--line-normal);
+}
+
+/* Huvudrubrik */
 .app-title {
     text-align: center;
     margin-bottom: var(--space-m);
+
     font-size: var(--font-size-xl);
     font-weight: var(--weight-bold);
     color: var(--text);
@@ -48,6 +71,17 @@ input { font-size: var(--font-size-sm); }
 /* === Scale up (läggs sedan i responsive.css) === */
     gap: var(--space-xs);
 
-    /* förbättrad textskugga med tokens */
-    text-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    text-shadow: var(--text-shadow-soft);
+}
+
+/* Standard layout för sektioner */
+section {
+    width: 100%;
+    max-width: 700px;
+}
+
+/* Fokus – tillgänglighet */
+:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
 }

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ================================================================
    🌤 WEATHER CARD (search result)
 ================================================================ */
@@ -27,12 +28,25 @@
    📌 SAVED CITY CARDS UI
 ================================================================ */
 
+=======
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
 .city-card {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+<<<<<<< HEAD
 
+=======
+    padding: var(--space-s) var(--space-m);
+    border-radius: var(--radius-l);
+    background: var(--card-bg);
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+
+    transition: transform var(--speed-fast),
+                background var(--speed-normal);
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
     min-height: 100px;
     padding: var(--space-s) var(--space-m);
 
@@ -49,6 +63,7 @@
 .city-card:hover,
 .city-card:focus { transform: translateY(-2px); outline: 3px solid var(--accent); }
 
+<<<<<<< HEAD
 /* Text-grupper */
 .city-info { display: flex; flex-direction: column; gap: var(--space-xxs); }
 
@@ -60,4 +75,39 @@
     font-size: var(--font-size-md);
     font-weight: var(--weight-bold);
     color: var(--temp-color);
+=======
+.city-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xxs);
+}
+
+.city-name {
+    font-weight: var(--weight-bold);
+    font-size: var(--font-size-md);
+    color: var(--card-text);
+}
+
+.city-weather {
+    font-size: var(--font-size-sm);
+    color: var(--secondary-text);
+}
+
+.city-temp {
+    font-weight: var(--weight-bold);
+    font-size: var(--font-size-lg);
+    color: var(--temp-color);
+    margin-top: auto;
+}
+
+.card {
+    margin-top: var(--space-l);
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    padding: var(--space-l);
+    border-radius: var(--radius-l);
+    text-align: center;
+    color: var(--card-text);
+    box-shadow: var(--shadow-medium);
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
 }

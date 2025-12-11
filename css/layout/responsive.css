@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ================================================================
    RESPONSIVE OVERRIDES (endast  tablet/desktop)
    All mobile-styling ligger nu i grundfilerna
@@ -12,12 +13,32 @@
 
     .app-title {
         font-size: var(--font-size-xl);
+=======
+/* ============================================
+   📱 MOBILE-FIRST (gäller som standard)
+   All grundstil finns i komponentfilerna
+============================================ */
+
+
+/* ============================================
+   📲 TABLET (min-width 600px)
+============================================ */
+@media (min-width: 600px) {
+
+    body {
+        padding: var(--space-l);
+    }
+
+    .app-title {
+        font-size: var(--font-size-xxl);
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
     }
 
     input {
         font-size: var(--font-size-md);
     }
 
+<<<<<<< HEAD
     /* Saved & Options lägger ut i grid/flex när skärmen räcker */
     .saved,
     .options {
@@ -32,6 +53,19 @@
         justify-content: space-between;
         padding: var(--space-s) var(--space-m);
         min-height: auto;
+=======
+    .saved,
+    .options {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+
+    .city-card,
+    .city-option {
+        flex-direction: column;
+        padding: var(--space-m);
+        min-height: 120px;
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
     }
 
     .city-name {
@@ -39,11 +73,28 @@
     }
 
     .city-temp {
+<<<<<<< HEAD
         margin-top: 0;
         font-size: var(--font-size-lg);
+=======
+        font-size: var(--font-size-lg);
+        margin-top: auto;
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
     }
 }
+.weekly-forecast {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-s);
+    justify-content: space-between;
+}
 
+/* ============================================
+   🖥 DESKTOP (min-width 900px)
+============================================ */
+@media (min-width: 900px) {
+
+<<<<<<< HEAD
 
 /* 🟨 Desktop – större kartvy och luftigare helhet */
 @media (min-width: 900px) {
@@ -56,4 +107,28 @@
         height: calc(var(--map-height) * 1.4);
         border-radius: var(--radius-xl);
     }
+=======
+    body {
+        padding: var(--space-xl);
+    }
+
+    .app {
+        max-width: 900px;
+        margin: auto;
+    }
+
+    .saved,
+    .options {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    }
+
+    .city-card,
+    .city-option {
+        padding: var(--space-l);
+    }
+
+    .weekly-forecast {
+        gap: var(--space-m);
+    }
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
 }

@@ -1,13 +1,20 @@
+<<<<<<< HEAD
 /* ================================================================
    🔍 CITY SUGGESTION DROPDOWN
 ================================================================ */
 
+=======
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
 #cityOptions {
     display: flex;
     flex-direction: column;
     gap: var(--space-s);
+<<<<<<< HEAD
 
     margin-top: var(--space-m);
+=======
+    margin-top: var(--space-l);
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
     max-height: 300px;
     overflow-y: auto;
     width: 100%;
@@ -17,6 +24,7 @@
 .city-option {
     padding: var(--space-s) var(--space-m);
     width: 100%;
+<<<<<<< HEAD
 
     background: color-mix(in srgb, var(--text) 10%, var(--bg) 90%);
     border: 1px solid color-mix(in srgb, var(--text) 25%, transparent 75%);
@@ -25,13 +33,35 @@
     color: var(--text);
     font-size: var(--font-size-md);
     font-weight: var(--weight-medium);
+=======
+    text-align: left;
+    padding: var(--space-s) var(--space-m);
+
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+
+    border-radius: var(--radius-l);
+    color: var(--text);
+    font-size: var(--font-size-md);
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
     cursor: pointer;
 
     transition: background var(--speed-normal), border-color var(--speed-normal), transform var(--speed-fast);
 }
 
 .city-option.selected {
+<<<<<<< HEAD
     background: color-mix(in srgb, var(--text) 30%, var(--bg) 70%);
     border: 2px solid var(--accent);
     transform: translateY(-2px);
+=======
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: var(--shadow-medium);
+    border: 2px solid var(--accent);
+}
+
+#cityOptions::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-s);
+>>>>>>> bc5bc05682bca70803a159b3632e375c5ca13a68
 }
