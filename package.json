@@ -1,0 +1,26 @@
+{
+  "name": "weather-app2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+"test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FiorellaDiGiulio/weather-app2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+"type": "module",
+  "bugs": {
+    "url": "https://github.com/FiorellaDiGiulio/weather-app2/issues"
+  },
+  "homepage": "https://github.com/FiorellaDiGiulio/weather-app2#readme",
+  "devDependencies": {
+    "jest": "^30.2.0"
+  }
+}

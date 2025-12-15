@@ -1,3 +1,4 @@
+import { describe, test, expect, jest } from "@jest/globals";
 import { weatherApi } from "../js/services/weatherApi.js";
 
 global.fetch = jest.fn();
