@@ -4,7 +4,7 @@ let hoverIndex = -1; // Temporär musmarkering
 
 export function clearOptions() {
     const container = document.getElementById("cityOptions");
-    container.innerHTML = "";
+    container.textContent = "";
     selectedIndex = -1;
     hoverIndex = -1;
     currentOptions = [];

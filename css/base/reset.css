@@ -1,35 +1,53 @@
-/* Ta bort webbläsarens defaultmarginaler och padding */
-* {
+/* ======================================================
+   RESET + BASE DESIGN LAYER
+   (För en ren, UI-stabil och tokenstyrd applikation)
+====================================================== */
+
+/* Nollställ marginaler + förbättrad box-model */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Gör bilder responsiva */
-img {
+/* Media skalas automatiskt */
+img,
+picture,
+video,
+canvas {
     max-width: 100%;
     display: block;
 }
 
-/* Gör knappar lättare att styla */
+/* Text på en linje bryts aldrig ur box av misstag */
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+/* Knappar blir enklare att designa */
 button {
-    background: none;
     border: none;
-    font: inherit;
+    background: none;
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
     cursor: pointer;
 }
 
-/* Ta bort punktlistor */
+/* Listor utan bullets som standard */
 ul, ol {
     list-style: none;
 }
 
-/* Säkerställ att formulär är konsistenta */
-input, button, textarea, select {
-    font: inherit;
+/* Formkontroller följer typografi-systemet */
+input, textarea, select {
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
 }
 
-/* Grundläggande läsbarhet */
+/* Bas-läsbarhet via tokens */
 body {
-    line-height: 1.5;
+    line-height: var(--line-normal);
+    font-family: var(--font-family);
 }
