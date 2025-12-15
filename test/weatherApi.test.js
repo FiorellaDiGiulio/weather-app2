@@ -1,4 +1,4 @@
-import { weatherApi } from "./weatherApi.js";
+import { weatherApi } from "../js/services/weatherApi.js";
 
 global.fetch = jest.fn();
 
