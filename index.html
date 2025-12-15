@@ -8,15 +8,30 @@
     <title>Väderapp</title>
 
     <!-- Säkerhet --> 
-    <meta http-equiv="Content-Security-Policy" content="
-        default-src 'self';
-        script-src 'self' https://unpkg.com;
-        style-src 'self' https://unpkg.com 'unsafe-inline';
-        img-src 'self' https://a.tile.openstreetmap.org https://b.tile.openstreetmap.org https://c.tile.openstreetmap.org https://unpkg.com data:;
-        connect-src 'self' https://api.open-meteo.com https://geocoding-api.open-meteo.com https://unpkg.com;
-        font-src 'self' https://unpkg.com;
-        object-src 'none';
-        base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy"
+    content="
+      default-src 'self';
+
+         script-src
+            'self'
+                 https://unpkg.com;
+
+          style-src
+             'self'
+                https://unpkg.com;
+
+        connect-src
+             'self'
+             http://stockholm2.onvo.se
+             https://api.open-meteo.com
+             https://geocoding-api.open-meteo.com;
+
+        img-src
+         'self'
+             https://*.tile.openstreetmap.org
+             https://unpkg.com
+             data:;
+">
 
     <link rel="stylesheet" href="style.css">
 
