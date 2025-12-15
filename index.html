@@ -7,7 +7,7 @@
 
     <title>Väderapp</title>
 
-    <!-- Säkerhet --> 
+    <!-- Säkerhet -->
     <meta http-equiv="Content-Security-Policy"
     content="
       default-src 'self';
@@ -39,7 +39,7 @@
 
     <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-    <script type="module" src="./js/main.js"></script>
+    <script type="module" src="./js/main.js" defer></script>
 </head>
 
 <body>
@@ -52,7 +52,7 @@
         <button id="themeToggle" class="theme-toggle" aria-label="Växla mörkt/ljust tema">
             <span class="toggle-icon">🌞</span>
             <span class="toggle-text">Ljus</span>
-        </button> 
+        </button>
     </div>
 
         <div class="search-container">
@@ -63,10 +63,10 @@
 
         <!-- Lista med städer -->
         <section id="cityOptions" class="options"></section>
-        
+
         <!-- Karta -->
         <section id="cityMap"></section>
-                
+
         <!-- Väderkort -->
         <section id="weatherInfo"></section>
 
