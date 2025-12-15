@@ -75,6 +75,34 @@
     }
 
     .weekly-forecast {
-        gap: var(--space-m);
+        display: flex;
+        gap: 8px; /* mindre mellanrum än tidigare */
+        overflow-x: auto;
+        padding: 8px 0;
     }
+    
+    .weekly-card {
+        flex: 0 0 120px; /* kortbredd */
+        height: 180px; /* lite högre */
+        background-color: var(--card-bg, #f0f0f0);
+        border-radius: 8px;
+        padding: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between; /* sprider ut innehållet jämnt */
+        text-align: center;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .weekly-card .day {
+        font-weight: bold;
+    }
+    
+    .weekly-card .temp,
+    .weekly-card .weather-code,
+    .weekly-card .wind {
+        margin: 2px 0; /* lite mindre mellanrum mellan texten */
+    }
+    
 }
