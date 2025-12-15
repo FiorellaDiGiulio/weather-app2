@@ -90,7 +90,7 @@
 }
 
 /* Droppar som rinner på skärmen */
-.raindrop-trail {
+/* .raindrop-trail {
     position: absolute;
     width: 2px;
     height: 90px;
@@ -103,9 +103,7 @@
     0% { transform: translateY(-20vh); opacity: 0; }
     20% { opacity: 1; }
     100% { transform: translateY(120vh); opacity: 0; }
-}
-
-
+}*/
 
 /* =========================================================================
    💨 VINDPARTIKLAR (små ljusa prickar som blåser i sidled)
