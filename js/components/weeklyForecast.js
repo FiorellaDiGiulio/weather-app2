@@ -7,7 +7,7 @@ export function renderWeeklyForecast(container, weeklyData) {
     if (!weeklyData || !weeklyData.days) return;
 
     const forecastWrapper = document.createElement("div");
-    forecastWrapper.className = "weekly-forecast"; // vi kan styla som horisontell rad
+    forecastWrapper.className = "forecast-card"; // vi kan styla som horisontell rad
 
     weeklyData.days.forEach((day, index) => {
         const card = document.createElement("div");
