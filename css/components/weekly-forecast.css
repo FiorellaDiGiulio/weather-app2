@@ -25,7 +25,8 @@
 .wind         { grid-column: 4; text-align:right; }
 
 /*** Typografi ***/
-.weekly-card div {
-    font-size: var(--font-size-sm);
+.weekly-card section {
+    font-size: var(--font-size-s);
     margin: 0;
+    grid-column: auto;
 }
