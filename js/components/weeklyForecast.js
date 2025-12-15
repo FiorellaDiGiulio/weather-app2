@@ -17,21 +17,22 @@ export function renderWeeklyForecast(container, weeklyData) {
         const dateEl = document.createElement("div");
         dateEl.className = "day";
         dateEl.textContent = new Date(day).toLocaleDateString("sv-SE", { weekday: "short", day: "numeric" });
-
+        dateEl.tabIndex = 0;
         // Temperatur
         const tempEl = document.createElement("div");
         tempEl.className = "temp";
         tempEl.textContent = `${Math.round(weeklyData.tempMax[index])}° / ${Math.round(weeklyData.tempMin[index])}°`;
-
+        tempEl.tabIndex = 0;
         // Väderkod → Emoji + beskrivning
         const weatherEl = document.createElement("div");
         weatherEl.className = "weather-code";
         weatherEl.textContent = translateWeatherCode(weeklyData.weatherCode[index]);
-
+        weatherEl.tabIndex = 0;
         // Vind
         const windEl = document.createElement("div");
         windEl.className = "wind";
         windEl.textContent = `💨 ${weeklyData.wind[index]} m/s`;
+        windEl.tabIndex = 0;
 
         card.appendChild(dateEl);
         card.appendChild(weatherEl);
