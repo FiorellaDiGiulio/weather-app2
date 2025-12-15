@@ -38,3 +38,9 @@
 #searchBtn:focus {
     background-color: var(--accent-hover, #003f99);
 }
+
+.theme-wrapper {
+    display: flex;
+    justify-content: center; /* centrerar horisontellt */
+    padding: var(--space-m);
+}
