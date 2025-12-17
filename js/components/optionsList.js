@@ -1,7 +1,15 @@
+/**
+ * Modul som hanterar rendering och interaktion av stadsförslag.
+ * Stöder både mus- och tangentbordsnavigation.
+ */
+
 let selectedIndex = -1;
 let currentOptions = [];
-let hoverIndex = -1; // Temporär musmarkering
+let hoverIndex = -1;
 
+/**
+ * Rensar alla stadsalternativ och återställer internt tillstånd.
+ */
 export function clearOptions() {
     const container = document.getElementById("cityOptions");
     container.textContent = "";
@@ -10,14 +18,19 @@ export function clearOptions() {
     currentOptions = [];
 }
 
+/**
+ * Renderar en lista med stadsförslag och kopplar händelser för mus och tangentbord.
+ *
+ * @param {Array<Object>} matches - Lista med matchande städer
+ * @param {Function} onSelect - Callback som anropas när en stad väljs
+ */
 export function renderOptions(matches, onSelect) {
     const container = document.getElementById("cityOptions");
     clearOptions();
 
-    // Mus lämnar listan → ta bort hover
     container.addEventListener("mouseleave", () => {
         hoverIndex = -1;
-        highlightOption(); // Visa tangentbordsmarkeringen igen
+        highlightOption();
     });
 
     matches.forEach((match, index) => {
@@ -26,29 +39,29 @@ export function renderOptions(matches, onSelect) {
         btn.className = "city-option";
         btn.setAttribute("tabindex", "-1");
 
-        // MUSMARKERING (temporär)
         btn.addEventListener("mouseenter", () => {
             hoverIndex = index;
             highlightOption();
         });
 
-        // MUSKLICK
         btn.addEventListener("click", () => onSelect(match));
 
         container.appendChild(btn);
         currentOptions.push(btn);
     });
 
-    // Tangentbordsförvald markering
     if (currentOptions.length > 0) {
         selectedIndex = 0;
         highlightOption();
     }
 }
 
+/**
+ * Uppdaterar visuell markering av stadsalternativ.
+ * Musmarkering prioriteras när musen är aktiv, annars används tangentbordsmarkering.
+ */
 export function highlightOption() {
     currentOptions.forEach((btn, idx) => {
-        // Visuell markering: hover prioriteras endast när musen är över
         if (hoverIndex >= 0) {
             btn.classList.toggle("selected", idx === hoverIndex);
         } else {
@@ -57,13 +70,19 @@ export function highlightOption() {
     });
 }
 
+/**
+ * Hanterar tangentbordsnavigation i listan med stadsalternativ.
+ *
+ * @param {KeyboardEvent} event - Tangentbordshändelsen
+ * @param {Function} onSelect - Callback som anropas när ett alternativ väljs
+ */
 export function handleKeyboardNavigation(event, onSelect) {
     if (currentOptions.length === 0) return;
 
     if (event.key === "ArrowDown") {
         event.preventDefault();
         selectedIndex = (selectedIndex + 1) % currentOptions.length;
-        hoverIndex = -1; // tangentbord tar över
+        hoverIndex = -1;
         highlightOption();
     }
     else if (event.key === "ArrowUp") {
