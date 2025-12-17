@@ -1,19 +1,26 @@
-// weathercard.js
-// ===================================
-// Skapar och hanterar väderkort
-// ===================================
-
+/**
+ * Klass som skapar och hanterar visning av väderkort.
+ * Väderkortet byggs med DOM-element (utan innerHTML) och är tillgänglighetsanpassat.
+ */
 export class WeatherCard {
+    /**
+     * Skapar ett nytt väderkort.
+     *
+     * @param {Object} weatherData - Väderdata som används i kortet
+     */
     constructor(weatherData) {
-        this.data = weatherData; // inkluderar name, main.temp, description, lat, lon
+        this.data = weatherData;
     }
 
-    // 1. Skapa DOM-elementet utan innerHTML
+    /**
+     * Skapar och returnerar DOM-elementet för väderkortet.
+     *
+     * @returns {HTMLElement} Det färdiga väderkortet
+     */
     render() {
         const card = document.createElement("div");
         card.classList.add("card");
 
-        // Unik identitet
         card.dataset.lat = this.data.lat;
         card.dataset.lon = this.data.lon;
 
@@ -23,7 +30,6 @@ export class WeatherCard {
             minute: "2-digit"
         });
 
-        // === SECTION ===
         const section = document.createElement("section");
         section.setAttribute("role", "region");
         section.setAttribute(
@@ -32,12 +38,10 @@ export class WeatherCard {
         );
         section.setAttribute("aria-live", "polite");
 
-        // === H2 ===
         const title = document.createElement("h2");
         title.tabIndex = 0;
         title.textContent = this.data.name;
 
-        // === Temperatur ===
         const tempP = document.createElement("p");
         tempP.tabIndex = 0;
 
@@ -48,7 +52,6 @@ export class WeatherCard {
         tempP.appendChild(tempLabel);
         tempP.append(` ${this.data.main.temp}°C`);
 
-        // === Beskrivning ===
         const descP = document.createElement("p");
         descP.tabIndex = 0;
 
@@ -59,7 +62,6 @@ export class WeatherCard {
         descP.appendChild(descLabel);
         descP.append(` ${this.data.weather[0].description}`);
 
-        // === Tidsstämpel ===
         const timeP = document.createElement("p");
         timeP.tabIndex = 0;
 
@@ -70,27 +72,30 @@ export class WeatherCard {
         timeP.appendChild(timeLabel);
         timeP.append(` Uppdaterad: ${time}`);
 
-        // === Bygg ihop kortet ===
         section.append(title, tempP, descP, timeP);
         card.appendChild(section);
 
         return card;
     }
 
-    // 2. Hantera dubletter + ordning
+    /**
+     * Lägger in ett väderkort i containern och säkerställer
+     * att inga dubletter finns för samma latitud och longitud.
+     * Det nya kortet placeras högst upp.
+     *
+     * @param {HTMLElement} cardElement - Väderkortets DOM-element
+     */
     static insert(cardElement) {
         const weatherInfo = document.getElementById("weatherInfo");
 
         const lat = cardElement.dataset.lat;
         const lon = cardElement.dataset.lon;
 
-        // Ta bort alla äldre kort för samma lat/lon
         const oldCards = weatherInfo.querySelectorAll(
             `[data-lat="${lat}"][data-lon="${lon}"]`
         );
         oldCards.forEach(card => card.remove());
 
-        // Lägg nya kortet HÖGST UPP
         weatherInfo.prepend(cardElement);
     }
 }
