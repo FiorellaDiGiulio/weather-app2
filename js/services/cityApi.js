@@ -1,8 +1,14 @@
-// cityApi.js
-// =============================
-// Hämtar stadsförslag från Open-Meteo Geocoding API
-// Returnerar ALLA matches så main.js kan filtrera exakt
-// =============================
+/**
+ * Modul för att hämta stadsförslag från Open-Meteo Geocoding API.
+ * Returnerar alla träffar så att filtrering kan göras i annan modul.
+ */
+
+/**
+ * Hämtar städer baserat på en söksträng.
+ *
+ * @param {string} query - Texten som användaren söker efter (t.ex. stadsnamn)
+ * @returns {Promise<Array>} En lista med stadsresultat, eller en tom array om inget hittas
+ */
 
 export async function cityApi(query) {
     if (!query) return [];
@@ -15,10 +21,8 @@ export async function cityApi(query) {
         
         const data = await res.json();
         
-        // Om inga resultat → returera tom array
         if (!data.results) return [];
 
-        // Returnera ALLA råa träffar utan magi
         return data.results;
 
     } catch (error) {
