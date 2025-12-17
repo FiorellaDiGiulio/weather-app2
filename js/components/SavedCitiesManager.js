@@ -5,19 +5,40 @@ import { showMap } from "./mapView.js";
 import { clearOptions } from "./optionsList.js";
 import { renderWeeklyForecast } from "./weeklyForecast.js";
 
+/**
+ * Klass som hanterar sparade städer, inklusive rendering,
+ * val av stad, lokal lagring och visning av väder, karta och prognos.
+ */
 export class SavedCitiesManager {
+    /**
+     * Skapar en ny instans av SavedCitiesManager.
+     *
+     * @param {HTMLInputElement} cityInput - Inputfältet för stadssökning
+     * @param {HTMLElement} savedCitiesContainer - Container för sparade städer
+     * @param {HTMLElement} weatherInfo - Container för dagens väder
+     * @param {HTMLElement} weeklyContainer - Container för veckoväder
+     */
     constructor(cityInput, savedCitiesContainer, weatherInfo, weeklyContainer) {
         this.cityInput = cityInput;
         this.savedCitiesContainer = savedCitiesContainer;
         this.weatherInfo = weatherInfo;
-        this.weeklyContainer = weeklyContainer; // för veckoväder
+        this.weeklyContainer = weeklyContainer;
         this.savedCities = JSON.parse(localStorage.getItem("savedCities")) || [];
     }
 
+    /**
+     * Sparar listan med städer till localStorage.
+     */
     saveCities() {
         localStorage.setItem("savedCities", JSON.stringify(this.savedCities));
     }
 
+    /**
+     * Renderar alla sparade städer som kort med aktuell temperatur och väder.
+     *
+     * @param {boolean} show - Anger om sparade städer ska visas
+     * @returns {Promise<void>}
+     */
     async renderSavedCities(show = true) {
         this.savedCitiesContainer.textContent = "";
 
@@ -40,7 +61,6 @@ export class SavedCitiesManager {
                 }
             }
 
-            // Skapa kort
             const card = document.createElement("div");
             card.className = "city-card";
             card.tabIndex = 0;
@@ -66,7 +86,6 @@ export class SavedCitiesManager {
             card.appendChild(info);
             card.appendChild(tempEl);
 
-            // Kryss-knapp
             const removeBtn = document.createElement("button");
             removeBtn.className = "remove-btn";
             removeBtn.textContent = "×";
@@ -94,6 +113,13 @@ export class SavedCitiesManager {
         }
     }
 
+    /**
+     * Väljer en stad, uppdaterar sparade städer och visar
+     * aktuellt väder, karta och veckoprognos.
+     *
+     * @param {Object} cityObj - Objekt som representerar staden
+     * @returns {Promise<void>}
+     */
     async selectCity(cityObj) {
         clearOptions();
         this.cityInput.value = cityObj.name;
@@ -114,7 +140,6 @@ export class SavedCitiesManager {
 
         await this.renderSavedCities();
 
-        // Dagens väder
         const weather = await weatherApi(cityObj.latitude, cityObj.longitude);
         if (weather) {
             if (weather.weather && weather.weather[0]) {
@@ -127,10 +152,8 @@ export class SavedCitiesManager {
             this.weatherInfo.appendChild(card.render());
         }
 
-        // Visa karta
         showMap(cityObj.latitude, cityObj.longitude);
 
-        // Veckoväder
         if (this.weeklyContainer) {
             const weeklyData = await weeklyWeatherApi(cityObj.latitude, cityObj.longitude);
             renderWeeklyForecast(this.weeklyContainer, weeklyData);
