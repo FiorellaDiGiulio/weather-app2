@@ -51,6 +51,7 @@ export class SavedCitiesManager {
         heading.className = "saved-cities-heading";
         heading.textContent = "Sparade städer";
         this.savedCitiesContainer.appendChild(heading);
+        heading.tabIndex = 0;
 
         for (const city of this.savedCities) {
             const weather = await weatherApi(city.latitude, city.longitude);
@@ -80,10 +81,12 @@ export class SavedCitiesManager {
             const nameEl = document.createElement("section");
             nameEl.className = "city-name";
             nameEl.textContent = `${city.name}, ${city.country}`;
+            nameEl.tabIndex = 0;
 
             const weatherEl = document.createElement("section");
             weatherEl.className = "city-weather";
             weatherEl.textContent = weatherText;
+            weatherEl.tabIndex = 0;
 
             info.appendChild(nameEl);
             info.appendChild(weatherEl);
@@ -91,6 +94,7 @@ export class SavedCitiesManager {
             const tempEl = document.createElement("section");
             tempEl.className = "city-temp";
             tempEl.textContent = `${tempText}°C`;
+            tempEl.tabIndex = 0;
 
             card.appendChild(info);
             card.appendChild(tempEl);
