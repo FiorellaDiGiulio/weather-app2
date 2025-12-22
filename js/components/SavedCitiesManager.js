@@ -18,6 +18,7 @@ export class SavedCitiesManager {
      * @param {HTMLElement} weatherInfo - Container för dagens väder
      * @param {HTMLElement} weeklyContainer - Container för veckoväder
      */
+
     constructor(cityInput, savedCitiesContainer, weatherInfo, weeklyContainer) {
         this.cityInput = cityInput;
         this.savedCitiesContainer = savedCitiesContainer;
@@ -32,7 +33,7 @@ export class SavedCitiesManager {
     saveCities() {
         localStorage.setItem("savedCities", JSON.stringify(this.savedCities));
     }
-
+   
     /**
      * Renderar alla sparade städer som kort med aktuell temperatur och väder.
      *
@@ -44,12 +45,18 @@ export class SavedCitiesManager {
 
         if (!show || this.savedCities.length === 0) return;
 
+         const title = document.createElement("h2");
+            title.textContent = "Senaste sökta städer";
+            title.tabIndex = 0;
+            this.savedCitiesContainer.appendChild(title);
+
         for (const city of this.savedCities) {
             const weather = await weatherApi(city.latitude, city.longitude);
 
             let weatherText = "";
             let tempText = 0;
 
+            
             if (weather) {
                 if (weather.weather && weather.weather[0]) {
                     weatherText = translateWeatherCode(weather.weather[0].code);
@@ -61,25 +68,26 @@ export class SavedCitiesManager {
                 }
             }
 
-            const card = document.createElement("div");
+
+            const card = document.createElement("section");
             card.className = "city-card";
             card.tabIndex = 0;
 
-            const info = document.createElement("div");
+            const info = document.createElement("section");
             info.className = "city-info";
 
-            const nameEl = document.createElement("div");
+            const nameEl = document.createElement("section");
             nameEl.className = "city-name";
             nameEl.textContent = `${city.name}, ${city.country}`;
 
-            const weatherEl = document.createElement("div");
+            const weatherEl = document.createElement("section");
             weatherEl.className = "city-weather";
             weatherEl.textContent = weatherText;
 
             info.appendChild(nameEl);
             info.appendChild(weatherEl);
 
-            const tempEl = document.createElement("div");
+            const tempEl = document.createElement("section");
             tempEl.className = "city-temp";
             tempEl.textContent = `${tempText}°C`;
 
