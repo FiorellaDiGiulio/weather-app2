@@ -15,6 +15,11 @@ export function renderWeeklyForecast(container, weeklyData) {
     const forecastWrapper = document.createElement("section");
     forecastWrapper.className = "weekly-forecast";
 
+    const title = document.createElement("h2");
+    title.textContent = "Veckans väder";
+    title.tabIndex = 0;
+    forecastWrapper.appendChild(title);
+
     weeklyData.days.forEach((day, index) => {
         const card = document.createElement("section");
         card.className = "weekly-card";
