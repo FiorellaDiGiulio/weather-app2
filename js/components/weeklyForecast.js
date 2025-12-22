@@ -9,16 +9,15 @@ import { translateWeatherCode } from "../utility/translate.js";
  */
 export function renderWeeklyForecast(container, weeklyData) {
     container.textContent = ""; // tömmer gammalt innehåll
-
     if (!weeklyData || !weeklyData.days) return;
+
+    const title = document.createElement("h3");
+    title.textContent = "Veckans väder";
+    title.tabIndex = 0;
+    container.appendChild(title);
 
     const forecastWrapper = document.createElement("section");
     forecastWrapper.className = "weekly-forecast";
-
-    const title = document.createElement("h2");
-    title.textContent = "Veckans väder";
-    title.tabIndex = 0;
-    forecastWrapper.appendChild(title);
 
     weeklyData.days.forEach((day, index) => {
         const card = document.createElement("section");

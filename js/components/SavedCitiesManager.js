@@ -30,6 +30,7 @@ export class SavedCitiesManager {
     /**
      * Sparar listan med städer till localStorage.
      */
+
     saveCities() {
         localStorage.setItem("savedCities", JSON.stringify(this.savedCities));
     }
@@ -40,15 +41,16 @@ export class SavedCitiesManager {
      * @param {boolean} show - Anger om sparade städer ska visas
      * @returns {Promise<void>}
      */
+
     async renderSavedCities(show = true) {
         this.savedCitiesContainer.textContent = "";
 
         if (!show || this.savedCities.length === 0) return;
-
-         const title = document.createElement("h2");
-            title.textContent = "Senaste sökta städer";
-            title.tabIndex = 0;
-            this.savedCitiesContainer.appendChild(title);
+        
+        const heading = document.createElement("h3");
+        heading.className = "saved-cities-heading";
+        heading.textContent = "Sparade städer";
+        this.savedCitiesContainer.appendChild(heading);
 
         for (const city of this.savedCities) {
             const weather = await weatherApi(city.latitude, city.longitude);
@@ -56,7 +58,6 @@ export class SavedCitiesManager {
             let weatherText = "";
             let tempText = 0;
 
-            
             if (weather) {
                 if (weather.weather && weather.weather[0]) {
                     weatherText = translateWeatherCode(weather.weather[0].code);

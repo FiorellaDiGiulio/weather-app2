@@ -74,6 +74,7 @@
         padding: var(--space-l);
     }
 
+
     .weekly-forecast {
         display: flex;
         gap: 8px; /* mindre mellanrum än tidigare */

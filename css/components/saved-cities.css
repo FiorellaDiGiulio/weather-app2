@@ -29,3 +29,11 @@
 .city-card .remove-btn:hover {
     background: rgba(255,255,255,0.35);
 }
+
+.saved-cities-heading {
+    grid-column: 1 / -1; /* Tar hela gridens bredd */
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: var(--space-s); /* lite luft under */
+}

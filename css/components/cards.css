@@ -47,6 +47,7 @@
 
 .card {
     margin-top: var(--space-l);
+    margin-bottom: var(--space-l);
     background: var(--card-bg);
     backdrop-filter: blur(10px);
     padding: var(--space-l);

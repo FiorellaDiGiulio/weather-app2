@@ -1,3 +1,4 @@
+
 .weekly-forecast {
     width: 100%;
     display: grid;
@@ -12,7 +13,7 @@
     grid-template-columns: 1fr 1fr 2fr 1fr;  /* A-stil */
     align-items: center;
     padding: var(--space-xs) var(--space-m);
-    margin-top: var(--space-m);
+    margin:auto;
     background: var(--card-bg);
     border-radius: var(--radius-l);
     box-shadow: var(--shadow-soft);
@@ -29,4 +30,11 @@
     font-size: var(--font-size-s);
     margin: 0;
     grid-column: auto;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: var(--space-s);
 }
