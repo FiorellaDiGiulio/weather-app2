@@ -27,13 +27,6 @@
         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     }
 
-    .city-card,
-    .city-option {
-        flex-direction: column;
-        padding: var(--space-m);
-        min-height: 120px;
-    }
-
     .city-name {
         font-size: var(--font-size-md);
     }
